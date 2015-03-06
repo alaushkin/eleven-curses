@@ -15,24 +15,19 @@ public class ParseApplication extends Application {
     super.onCreate();
 
     // Initialize Crash Reporting.
-   // ParseCrashReporting.enable(this);
+    ParseCrashReporting.enable(this);
 
     // Enable Local Datastore.
-//    Parse.enableLocalDatastore(this);
-//
-//    // Add your initialization code here
-//     // Parse.initialize(this);
-//      try {
-//         // Parse.initialize(this, "4ha34zg9TAM31ZK8QFTqvD32v3BY7Uw2hL9B1ytS", "mKkb3WKKL1lvbrNPU7yrI5rr9oz2y6sQ4lCxs8q7");
-//      }catch (Exception e){
-//          e.printStackTrace();
-//      }
-//
-//    ParseUser.enableAutomaticUser();
-//    ParseACL defaultACL = new ParseACL();
-//    // Optionally enable public read access.
-//    // defaultACL.setPublicReadAccess(true);
-//    ParseACL.setDefaultACL(defaultACL, true);
-//    startActivity(new Intent(null,AutorizationActivity.class));
+    Parse.enableLocalDatastore(this);
+
+    // Add your initialization code here
+      //Parse.initialize(this);
+    Parse.initialize(this, "4ha34zg9TAM31ZK8QFTqvD32v3BY7Uw2hL9B1ytS", "mKkb3WKKL1lvbrNPU7yrI5rr9oz2y6sQ4lCxs8q7");
+
+    ParseUser.enableAutomaticUser();
+    ParseACL defaultACL = new ParseACL();
+    // Optionally enable public read access.
+    // defaultACL.setPublicReadAccess(true);
+    ParseACL.setDefaultACL(defaultACL, true);
   }
 }

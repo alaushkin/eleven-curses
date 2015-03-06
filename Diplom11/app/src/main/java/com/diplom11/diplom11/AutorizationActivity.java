@@ -8,14 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseAnalytics;
 import com.parse.ParseCrashReporting;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import bolts.Task;
 
 public class AutorizationActivity extends ActionBarActivity {
     private EditText login;
@@ -23,13 +27,12 @@ public class AutorizationActivity extends ActionBarActivity {
     private TextView errorField;
     private TextView registration;
     private Button signIn;
+    private ProgressBar autorizProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autorization);
-        Parse.initialize(this, "4ha34zg9TAM31ZK8QFTqvD32v3BY7Uw2hL9B1ytS", "mKkb3WKKL1lvbrNPU7yrI5rr9oz2y6sQ4lCxs8q7");
-        //ParseAnalytics.trackAppOpenedInBackground(getIntent());
         init();
     }
 
@@ -57,18 +60,19 @@ public class AutorizationActivity extends ActionBarActivity {
     }
 
     private void init(){
-        new ParseApplication();
+        autorizProgressBar = (ProgressBar) findViewById(R.id.autorizProgressBar);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.password);
         errorField = (TextView) findViewById(R.id.errorField);
         registration = (TextView) findViewById(R.id.registration);
         signIn = (Button) findViewById(R.id.signIn);
+        autorizProgressBar.setVisibility(View.INVISIBLE);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseObject testObject = new ParseObject("TestObject");
-                testObject.put("foo", "bar");
-                testObject.saveInBackground();
+//                ParseObject testObject = new ParseObject("TestObject");
+//                testObject.put("foo", "bar");
+//                testObject.saveInBackground();
                 if(authentication()){
                     Intent intent = new Intent(AutorizationActivity.this, MainMenuActivity.class);
                     startActivity(intent);
@@ -89,6 +93,15 @@ public class AutorizationActivity extends ActionBarActivity {
         if(login.getText().toString().equals("") || password.getText().toString().equals("")){
             errorField.setText("Введите логин/пароль.");
             return false;
+        }
+        try {
+            autorizProgressBar.setVisibility(View.VISIBLE);
+            ParseUser.logIn(login.getText().toString(), password.getText().toString());
+        } catch (ParseException e) {
+            errorField.setText("Неправильный логин/пароль.");
+            return false;
+        } finally {
+            autorizProgressBar.setVisibility(View.INVISIBLE);
         }
         return true;
     }
