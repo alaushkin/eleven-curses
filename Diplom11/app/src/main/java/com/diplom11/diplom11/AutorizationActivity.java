@@ -70,13 +70,14 @@ public class AutorizationActivity extends ActionBarActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ParseObject testObject = new ParseObject("TestObject");
-//                testObject.put("foo", "bar");
-//                testObject.saveInBackground();
+                ParseObject testObject = new ParseObject("TestObject");
+                testObject.put("foo", "bar");
+                testObject.saveInBackground();
                 if(authentication()){
                     Intent intent = new Intent(AutorizationActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 }
+
             }
         });
 

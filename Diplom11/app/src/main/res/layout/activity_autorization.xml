@@ -47,7 +47,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in"
+        android:text="Войти"
         android:id="@+id/signIn"
         style="@style/AppTheme"
         android:layout_below="@+id/errorField"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Registration"
+        android:text="Регистрация"
         android:id="@+id/registration"
         android:layout_below="@+id/signIn"
         android:layout_alignParentLeft="true"

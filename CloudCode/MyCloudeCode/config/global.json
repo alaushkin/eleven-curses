@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Diplom11": {
+            "applicationId": "4ha34zg9TAM31ZK8QFTqvD32v3BY7Uw2hL9B1ytS", 
+            "masterKey": "mzA3g7lOC8UqUlD3sXE833mV4ioPDd1bBDTUH6RV"
+        }, 
+        "_default": {
+            "link": "Diplom11"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}

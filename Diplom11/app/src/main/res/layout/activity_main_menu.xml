@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="6. Кабинет"
-        android:id="@+id/textView6"
+        android:id="@+id/menuItem6"
         android:background="#ffc0b0ae"
         android:layout_below="@+id/menuItem5"
         android:layout_alignParentLeft="true"

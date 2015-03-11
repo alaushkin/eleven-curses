@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diplom11.diplom11" >
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
@@ -11,8 +13,8 @@
         android:theme="@style/Theme.AppCompat" >
         <activity
             android:name=".AutorizationActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat">
+            android:label="Авторизация"
+            android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +23,23 @@
         </activity>
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="@string/title_activity_registration" >
+            android:label="Регистрация" >
+        </activity>
+        <activity
+            android:name=".CargoSearch"
+            android:label="Поиск грузов" >
+        </activity>
+        <activity
+            android:name=".MyCargos"
+            android:label="Мои грузы" >
+        </activity>
+        <activity
+            android:name=".AddCargo"
+            android:label="Добавить груз" >
         </activity>
     </application>
 
