@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\prj\Diplom11\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\classes-b71e14a23356a08e377e86759d9576eb6c1cf382.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-a5aebdf7d76d84b95e65ea074328769826c85803.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\libs\Parse-1.8.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\Parse-1.8.3-19895cc459db246275ecf1329ece88368eabf190.jar" />
+    </item>
+    <item
+        jar="C:\androind_sdk\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-20dbb0eb8054b13a04dcc6103cfecb5d64157c22.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\classes-b97d59bc688a043be9a79af7c9bd2ebc45e7fa40.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\libs\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-352bfd502c5d5483f73b07248d12554f01c2059a.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\libs\bolts-android-1.1.4-javadoc.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f5dd6492c539679411fa30818320b737c410158f">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-javadoc-4b8962875de7df760e00791cfe2d01a109fb8448.jar" />
+    </item>
+    <item
+        jar="C:\prj\Diplom11\app\libs\ParseCrashReporting-1.8.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6abf1314a88755b8fa034b2ae99956fc02170ed1">
+        <dex dex="C:\prj\Diplom11\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.8.3-fac4866fed31be72246f22b9b58a6cfb2c019052.jar" />
+    </item>
+
+</items>

@@ -12,6 +12,7 @@ public class RegistrationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        init();
     }
 
 
@@ -35,5 +36,9 @@ public class RegistrationActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void init(){
+        
     }
 }
