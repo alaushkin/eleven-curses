@@ -16,4 +16,8 @@ public class DictPair {
     public String toString(){
         return value;
     }
+
+    public String getKey(){
+        return key;
+    }
 }

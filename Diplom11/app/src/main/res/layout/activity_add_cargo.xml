@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/addCargoXSize"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -98,9 +98,9 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_toRightOf="@+id/editText"
+        android:id="@+id/addCargoYSize"
+        android:layout_alignBottom="@+id/addCargoXSize"
+        android:layout_toRightOf="@+id/addCargoXSize"
         android:layout_toLeftOf="@+id/textView10"
         android:layout_toStartOf="@+id/textView10" />
 
@@ -109,9 +109,9 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/addCargoZSize"
         android:layout_below="@+id/textView9"
-        android:layout_toRightOf="@+id/editText2"
+        android:layout_toRightOf="@+id/addCargoYSize"
         android:layout_alignRight="@+id/textView10"
         android:layout_alignEnd="@+id/textView10" />
 
@@ -121,7 +121,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Вес"
         android:id="@+id/textView11"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/addCargoXSize"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:minWidth="150dp" />
@@ -132,7 +132,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Объем"
         android:id="@+id/textView12"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/addCargoZSize"
         android:layout_alignRight="@+id/addCargoUnLoadCity"
         android:layout_alignEnd="@+id/addCargoUnLoadCity"
         android:minWidth="150dp" />
@@ -140,9 +140,9 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/addCargoWeight"
         android:layout_below="@+id/textView11"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -152,12 +152,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText5"
+        android:id="@+id/addCargoVolume"
         android:layout_below="@+id/textView12"
         android:layout_alignLeft="@+id/textView12"
         android:layout_alignStart="@+id/textView12"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3" />
+        android:layout_alignRight="@+id/addCargoZSize"
+        android:layout_alignEnd="@+id/addCargoZSize"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -165,7 +166,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Цена за километр р."
         android:id="@+id/textView13"
-        android:layout_below="@+id/editText4"
+        android:layout_below="@+id/addCargoWeight"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:minWidth="150dp" />
@@ -173,9 +174,9 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:ems="10"
-        android:id="@+id/editText6"
+        android:id="@+id/addCargoCost"
         android:layout_below="@+id/textView13"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -188,47 +189,68 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Дата доставки"
         android:id="@+id/textView14"
-        android:layout_above="@+id/editText6"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5" />
+        android:layout_above="@+id/addCargoCost"
+        android:layout_alignLeft="@+id/addCargoVolume"
+        android:layout_alignStart="@+id/addCargoVolume" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Тип корпус"
-        android:id="@+id/textView15"
-        android:layout_below="@+id/editText6"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Заполните все поля"
+        android:id="@+id/addCargoError"
+        android:layout_below="@+id/addCargoCost"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:textColor="#ffff0200" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Тип загрузки"
-        android:id="@+id/textView16"
-        android:layout_below="@+id/textView15"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Дополнительно"
-        android:id="@+id/textView17"
-        android:layout_below="@+id/textView16"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:inputType="numberDecimal|date"
+        android:ems="10"
+        android:id="@+id/addCargoDate"
+        android:layout_alignBottom="@+id/addCargoCost"
+        android:layout_alignLeft="@+id/textView14"
+        android:layout_alignStart="@+id/textView14" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/textView17"
+        android:id="@+id/addCargoBodyType"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/addCargoDate"
+        android:layout_alignEnd="@+id/addCargoDate"
+        android:layout_below="@+id/addCargoError"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addCargoLoadType"
+        android:layout_below="@+id/addCargoBodyType"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addCargoDop"
+        android:layout_below="@+id/addCargoLoadType"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить груз"
+        android:id="@+id/addCargoButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
