@@ -8,4 +8,5 @@
     <string name="title_activity_cargo_search">CargoSearch</string>
     <string name="title_activity_my_cargos">MyCargos</string>
     <string name="title_activity_add_cargo">AddCargo</string>
+    <string name="title_activity_cabinet">Cabinet</string>
 </resources>

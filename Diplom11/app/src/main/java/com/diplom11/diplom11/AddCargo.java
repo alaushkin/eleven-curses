@@ -131,13 +131,13 @@ public class AddCargo extends ActionBarActivity {
 
     private boolean validate(){
         return !(addCargoLoadCity.getText().toString().isEmpty()
-                && addCargoUnLoadCity.getText().toString().isEmpty()
-                && addCargoXSize.getText().toString().isEmpty()
-                && addCargoYSize.getText().toString().isEmpty()
-                && addCargoZSize.getText().toString().isEmpty()
-                && addCargoWeight.getText().toString().isEmpty()
-                && addCargoVolume.getText().toString().isEmpty()
-                && addCargoCost.getText().toString().isEmpty()
-                && addCargoDate.getText().toString().isEmpty());
+                || addCargoUnLoadCity.getText().toString().isEmpty()
+                || addCargoXSize.getText().toString().isEmpty()
+                || addCargoYSize.getText().toString().isEmpty()
+                || addCargoZSize.getText().toString().isEmpty()
+                || addCargoWeight.getText().toString().isEmpty()
+                || addCargoVolume.getText().toString().isEmpty()
+                || addCargoCost.getText().toString().isEmpty()
+                || addCargoDate.getText().toString().isEmpty());
     }
 }

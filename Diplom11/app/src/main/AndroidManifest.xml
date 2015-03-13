@@ -41,6 +41,10 @@
             android:name=".AddCargo"
             android:label="Добавить груз" >
         </activity>
+        <activity
+            android:name=".Cabinet"
+            android:label="@string/title_activity_cabinet" >
+        </activity>
     </application>
 
 </manifest>
