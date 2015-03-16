@@ -21,7 +21,7 @@ public class Cargo {
     private double cost;
     private String dop;
     private Date createdAt;
-    private Date arriveDate;
+    private String arriveDate;
     private String userId;
 
     public Cargo(ParseObject object){
@@ -37,7 +37,7 @@ public class Cargo {
         volume = Double.valueOf(object.get("volume").toString());
         cost = Double.valueOf(object.get("cost").toString());
         createdAt = object.getCreatedAt();
-        arriveDate = (Date) object.get("arriveDate");
+        arriveDate = (String) object.get("arriveDate");
         userId = (String) object.get("user");
     }
 
@@ -56,7 +56,7 @@ public class Cargo {
         result.append("Цена за километр: " + cost + "\n");
         result.append("Дополнительно: " + Dictionary.getDopById(dop) + "\n");
         result.append("Дата добавления заявки: " + new java.sql.Date(createdAt.getTime()) + "\n");
-        result.append("Дата прибытия: " + new java.sql.Date(arriveDate.getTime()) + "\n");
+        result.append("Дата прибытия: " +arriveDate + "\n");
         return result.toString();
     }
 }

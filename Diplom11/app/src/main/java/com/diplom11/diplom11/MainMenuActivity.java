@@ -63,7 +63,7 @@ public class MainMenuActivity extends ActionBarActivity {
         menuItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenuActivity.this, CargoSearch.class);
+                Intent intent = new Intent(MainMenuActivity.this, CargoSearchParametrs.class);
                 startActivity(intent);
             }
         });

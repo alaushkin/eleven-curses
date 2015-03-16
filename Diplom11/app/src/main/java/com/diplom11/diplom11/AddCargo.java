@@ -105,8 +105,8 @@ public class AddCargo extends ActionBarActivity {
             public void onClick(View v) {
                 if(validate()){
                     ParseObject parseObject = new ParseObject("Cargo");
-                    parseObject.put("loadingCity", addCargoLoadCity.getText().toString());
-                    parseObject.put("unloadingCity", addCargoUnLoadCity.getText().toString());
+                    parseObject.put("loadingCity", addCargoLoadCity.getText().toString().toUpperCase());
+                    parseObject.put("unloadingCity", addCargoUnLoadCity.getText().toString().toUpperCase());
                     parseObject.put("bodyType", ((DictPair)addCargoBodyType.getSelectedItem()).getKey());
                     parseObject.put("loadType", ((DictPair)addCargoLoadType.getSelectedItem()).getKey());
                     parseObject.put("dopId", ((DictPair)addCargoDop.getSelectedItem()).getKey());

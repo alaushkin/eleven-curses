@@ -27,7 +27,8 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:label="Регистрация" >
+            android:label="Регистрация"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CargoSearch"
@@ -44,6 +45,10 @@
         <activity
             android:name=".Cabinet"
             android:label="@string/title_activity_cabinet" >
+        </activity>
+        <activity
+            android:name=".CargoSearchParametrs"
+            android:label="@string/title_activity_cargo_search_parametrs" >
         </activity>
     </application>
 

@@ -1,5 +1,6 @@
 package com.diplom11.diplom11;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.DragEvent;
@@ -18,6 +19,8 @@ import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +32,7 @@ public class CargoSearch extends ActionBarActivity {
     private Button cargoOrderByAddDate;
     private Button cargoOrderByCost;
     private Button cargoOrderByArriveDate;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class CargoSearch extends ActionBarActivity {
         cargoOrderByCost = (Button) findViewById(R.id.cargoOrderByCost);
         cargoOrderByArriveDate = (Button) findViewById(R.id.cargoOrderByArriveDate);
         orderMode = 0;
+        intent = getIntent();
         loadCargos();
 
         cargoOrderByAddDate.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +113,17 @@ public class CargoSearch extends ActionBarActivity {
     private void loadCargos(){
         ParseQuery parseQuery = new ParseQuery("Cargo");
         parseQuery.whereEqualTo("state",1);
+        parseQuery.whereEqualTo("loadingCity", intent.getStringExtra("fromCity").toUpperCase());
+        parseQuery.whereEqualTo("unloadingCity", intent.getStringExtra("toCity").toUpperCase());
+        parseQuery.whereEqualTo("bodyType", intent.getStringExtra("bodyType"));
+        parseQuery.whereEqualTo("loadType", intent.getStringExtra("loadType"));
+        parseQuery.whereEqualTo("dopId", intent.getStringExtra("dop"));
+        parseQuery.whereGreaterThanOrEqualTo("weight", Double.parseDouble(intent.getStringExtra("fromWeight")));
+        parseQuery.whereLessThanOrEqualTo("weight", Double.parseDouble(intent.getStringExtra("toWeight")));
+        parseQuery.whereGreaterThanOrEqualTo("volume", Double.parseDouble(intent.getStringExtra("fromVolume")));
+        parseQuery.whereLessThanOrEqualTo("volume", Double.parseDouble(intent.getStringExtra("toVolume")));
+        parseQuery.whereGreaterThanOrEqualTo("arriveDate", intent.getStringExtra("date"));
+
         switch (orderMode){
             case 0:
                 parseQuery.orderByAscending("createdAt");

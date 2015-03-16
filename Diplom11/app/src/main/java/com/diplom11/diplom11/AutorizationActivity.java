@@ -1,6 +1,7 @@
 package com.diplom11.diplom11;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -60,6 +61,8 @@ public class AutorizationActivity extends ActionBarActivity {
     }
 
     private void init(){
+        SharedPreferences sPref;
+        sPref = getPreferences(MODE_PRIVATE);
         autorizProgressBar = (ProgressBar) findViewById(R.id.autorizProgressBar);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.password);
@@ -67,13 +70,21 @@ public class AutorizationActivity extends ActionBarActivity {
         registration = (TextView) findViewById(R.id.registration);
         signIn = (Button) findViewById(R.id.signIn);
         autorizProgressBar.setVisibility(View.INVISIBLE);
+
+        login.setText(sPref.getString("login", ""));
+        password.setText(sPref.getString("password", ""));
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseObject testObject = new ParseObject("TestObject");
-                testObject.put("foo", "bar");
-                testObject.saveInBackground();
-                if(authentication()){
+                if (authentication()) {
+                    SharedPreferences sPref;
+                    sPref = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString("login", login.getText().toString());
+                    ed.putString("password", password.getText().toString());
+                    ed.commit();
+
                     Intent intent = new Intent(AutorizationActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 }
