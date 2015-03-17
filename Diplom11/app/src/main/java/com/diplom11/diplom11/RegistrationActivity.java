@@ -115,13 +115,22 @@ public class RegistrationActivity extends ActionBarActivity {
                 || regName.getText().toString().isEmpty()
                 || regLastName.getText().toString().isEmpty()
                 || regMidName.getText().toString().isEmpty()){
-            regErrorField.setText("Все поля обязательны для заполнения");
+            regErrorField.setText("Заполните все поля");
+            return false;
+        }
+        if(!regLogin.getText().toString().contains("@")){
+            regErrorField.setText("Введен некорректный логин");
+            return false;
+        }
+        if(regPassword.getText().toString().length() < 6){
+            regErrorField.setText("Минимальная длина пароля 6 символов");
             return false;
         }
         if(!regPassword.getText().toString().equals(regConfirm.getText().toString())){
             regErrorField.setText("Пароли не совпадают");
             return false;
         }
+
         return true;
     }
 }

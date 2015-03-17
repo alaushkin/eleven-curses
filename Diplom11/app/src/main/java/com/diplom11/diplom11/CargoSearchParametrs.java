@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import com.diplom11.diplom11.CargoSearchTools.DictPair;
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 
+import java.util.ArrayList;
+
 
 public class CargoSearchParametrs extends ActionBarActivity {
     private EditText cspFromCity;
@@ -58,7 +60,7 @@ public class CargoSearchParametrs extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init(){
+    private void init() {
         cspFromCity = (EditText) findViewById(R.id.cspFromCity);
         cspToCity = (EditText) findViewById(R.id.cspToCity);
         cspBodyType = (Spinner) findViewById(R.id.cspBodyType);
@@ -73,40 +75,58 @@ public class CargoSearchParametrs extends ActionBarActivity {
 
         ArrayAdapter<Object> adapter;
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getBodyTypeArray().toArray());
+        ArrayList bodyTypeArray = new ArrayList();
+        bodyTypeArray.add(new DictPair("", ""));
+        bodyTypeArray.addAll(Dictionary.getBodyTypeArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, bodyTypeArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cspBodyType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getLoadTypeArray().toArray());
+        ArrayList loadTypeArray = new ArrayList();
+        loadTypeArray.add(new DictPair("", ""));
+        loadTypeArray.addAll(Dictionary.getLoadTypeArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, loadTypeArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cspLoadType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getDopArray().toArray());
+        ArrayList dopArray = new ArrayList();
+        dopArray.add(new DictPair("", ""));
+        dopArray.addAll(Dictionary.getDopArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, dopArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cspDop.setAdapter(adapter);
 
         cspSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate()){
+                if (validate()) {
                     Intent intent = new Intent(CargoSearchParametrs.this, CargoSearch.class);
-                    intent.putExtra("fromCity", cspFromCity.getText().toString());
-                    intent.putExtra("toCity", cspToCity.getText().toString());
-                    intent.putExtra("bodyType", ((DictPair)cspBodyType.getSelectedItem()).getKey());
-                    intent.putExtra("loadType", ((DictPair)cspLoadType.getSelectedItem()).getKey());
-                    intent.putExtra("dop", ((DictPair)cspDop.getSelectedItem()).getKey());
-                    intent.putExtra("fromWeight", cspFromWeight.getText().toString());
-                    intent.putExtra("toWeight", cspToWeight.getText().toString());
-                    intent.putExtra("fromVolume", cspFromVolume.getText().toString());
-                    intent.putExtra("toVolume", cspToVolume.getText().toString());
-                    intent.putExtra("date", cspDate.getText().toString());
+                    intent.putExtra("fromCity", cspFromCity.getText().toString().trim());
+                    intent.putExtra("toCity", cspToCity.getText().toString().trim());
+                    intent.putExtra("bodyType", ((DictPair) cspBodyType.getSelectedItem()).getKey().trim());
+                    intent.putExtra("loadType", ((DictPair) cspLoadType.getSelectedItem()).getKey().trim());
+                    intent.putExtra("dop", ((DictPair) cspDop.getSelectedItem()).getKey().trim());
+                    intent.putExtra("fromWeight", cspFromWeight.getText().toString().trim());
+                    intent.putExtra("toWeight", cspToWeight.getText().toString().trim());
+                    intent.putExtra("fromVolume", cspFromVolume.getText().toString().trim());
+                    intent.putExtra("toVolume", cspToVolume.getText().toString().trim());
+                    intent.putExtra("date", cspDate.getText().toString().trim());
                     startActivity(intent);
                 }
             }
         });
     }
 
-    private boolean validate(){
-        return true;
+    private boolean validate() {
+        return !(cspFromCity.getText().toString().isEmpty()
+                && cspToCity.getText().toString().isEmpty()
+                && cspFromWeight.getText().toString().isEmpty()
+                && cspToWeight.getText().toString().isEmpty()
+                && cspFromVolume.getText().toString().isEmpty()
+                && cspToVolume.getText().toString().isEmpty()
+                && cspDate.getText().toString().isEmpty()
+                && ((DictPair) cspBodyType.getSelectedItem()).getKey().isEmpty()
+                && ((DictPair) cspLoadType.getSelectedItem()).getKey().isEmpty()
+                && ((DictPair) cspDop.getSelectedItem()).getKey().isEmpty());
     }
 }

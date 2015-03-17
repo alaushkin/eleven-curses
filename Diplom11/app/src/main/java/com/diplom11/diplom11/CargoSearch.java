@@ -34,6 +34,17 @@ public class CargoSearch extends ActionBarActivity {
     private Button cargoOrderByArriveDate;
     private Intent intent;
 
+    private String fromCity;
+    private String toCity;
+    private String bodyType;
+    private String loadType;
+    private String dop;
+    private Double fromWeight;
+    private Double toWeight;
+    private Double fromVolume;
+    private Double toVolume;
+    private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,21 +75,53 @@ public class CargoSearch extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init(){
+    private void init() {
         listViewCargo = (ListView) findViewById(R.id.listViewCargo);
         cargoOrderByAddDate = (Button) findViewById(R.id.cargoOrderByAddDate);
         cargoOrderByCost = (Button) findViewById(R.id.cargoOrderByCost);
         cargoOrderByArriveDate = (Button) findViewById(R.id.cargoOrderByArriveDate);
         orderMode = 0;
         intent = getIntent();
+        fromCity = intent.getStringExtra("fromCity");
+        if (fromCity != null) {
+            fromCity = fromCity.toUpperCase();
+        }
+        toCity = intent.getStringExtra("toCity");
+        if (toCity != null) {
+            toCity = toCity.toUpperCase();
+        }
+        bodyType = intent.getStringExtra("bodyType");
+        loadType = intent.getStringExtra("loadType");
+        dop = intent.getStringExtra("dop");
+        try {
+            fromWeight = Double.parseDouble(intent.getStringExtra("fromWeight"));
+        } catch (Exception e) {
+            fromWeight = null;
+        }
+        try {
+            toWeight = Double.parseDouble(intent.getStringExtra("toWeight"));
+        } catch (Exception e) {
+            toWeight = null;
+        }
+        try {
+            fromVolume = Double.parseDouble(intent.getStringExtra("fromVolume"));
+        } catch (Exception e) {
+            fromVolume = null;
+        }
+        try {
+            toVolume = Double.parseDouble(intent.getStringExtra("toVolume"));
+        } catch (Exception e) {
+            toVolume = null;
+        }
+        date = intent.getStringExtra("date");
         loadCargos();
 
         cargoOrderByAddDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(orderMode == 0){
+                if (orderMode == 0) {
                     orderMode = 1;
-                } else{
+                } else {
                     orderMode = 0;
                 }
                 loadCargos();
@@ -88,9 +131,9 @@ public class CargoSearch extends ActionBarActivity {
         cargoOrderByCost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(orderMode == 3){
+                if (orderMode == 3) {
                     orderMode = 2;
-                } else{
+                } else {
                     orderMode = 3;
                 }
                 loadCargos();
@@ -100,9 +143,9 @@ public class CargoSearch extends ActionBarActivity {
         cargoOrderByArriveDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(orderMode == 5){
+                if (orderMode == 5) {
                     orderMode = 4;
-                } else{
+                } else {
                     orderMode = 5;
                 }
                 loadCargos();
@@ -110,21 +153,31 @@ public class CargoSearch extends ActionBarActivity {
         });
     }
 
-    private void loadCargos(){
+    private void loadCargos() {
         ParseQuery parseQuery = new ParseQuery("Cargo");
-        parseQuery.whereEqualTo("state",1);
-        parseQuery.whereEqualTo("loadingCity", intent.getStringExtra("fromCity").toUpperCase());
-        parseQuery.whereEqualTo("unloadingCity", intent.getStringExtra("toCity").toUpperCase());
-        parseQuery.whereEqualTo("bodyType", intent.getStringExtra("bodyType"));
-        parseQuery.whereEqualTo("loadType", intent.getStringExtra("loadType"));
-        parseQuery.whereEqualTo("dopId", intent.getStringExtra("dop"));
-        parseQuery.whereGreaterThanOrEqualTo("weight", Double.parseDouble(intent.getStringExtra("fromWeight")));
-        parseQuery.whereLessThanOrEqualTo("weight", Double.parseDouble(intent.getStringExtra("toWeight")));
-        parseQuery.whereGreaterThanOrEqualTo("volume", Double.parseDouble(intent.getStringExtra("fromVolume")));
-        parseQuery.whereLessThanOrEqualTo("volume", Double.parseDouble(intent.getStringExtra("toVolume")));
-        parseQuery.whereGreaterThanOrEqualTo("arriveDate", intent.getStringExtra("date"));
+        parseQuery.whereEqualTo("state", 1);
+        if (fromCity != null && !fromCity.isEmpty())
+            parseQuery.whereEqualTo("loadingCity", fromCity);
+        if (toCity != null && !toCity.isEmpty())
+            parseQuery.whereEqualTo("unloadingCity", toCity);
+        if (bodyType != null && !bodyType.isEmpty())
+            parseQuery.whereEqualTo("bodyType", bodyType);
+        if (loadType != null && !loadType.isEmpty())
+            parseQuery.whereEqualTo("loadType", loadType);
+        if (dop != null && !dop.isEmpty())
+            parseQuery.whereEqualTo("dopId", dop);
+        if (fromWeight != null)
+            parseQuery.whereGreaterThanOrEqualTo("weight", fromWeight);
+        if (toWeight != null)
+            parseQuery.whereLessThanOrEqualTo("weight", toWeight);
+        if (fromVolume != null)
+            parseQuery.whereGreaterThanOrEqualTo("volume", fromVolume);
+        if (toVolume != null)
+            parseQuery.whereLessThanOrEqualTo("volume", toVolume);
+        if (toCity != null && !date.isEmpty())
+            parseQuery.whereGreaterThanOrEqualTo("arriveDate", date);
 
-        switch (orderMode){
+        switch (orderMode) {
             case 0:
                 parseQuery.orderByAscending("createdAt");
                 break;
@@ -147,7 +200,7 @@ public class CargoSearch extends ActionBarActivity {
         try {
             List list = parseQuery.find();
             cargos.clear();
-            for(Object o : list){
+            for (Object o : list) {
                 cargos.add(new Cargo((ParseObject) o));
             }
         } catch (ParseException e) {

@@ -48,7 +48,7 @@
         </activity>
         <activity
             android:name=".CargoSearchParametrs"
-            android:label="@string/title_activity_cargo_search_parametrs" >
+            android:label="Параметры поиска" >
         </activity>
     </application>
 
