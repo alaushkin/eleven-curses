@@ -14,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="11dp" />
+        android:textSize="11dp"
+        android:maxWidth="120dp" />
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -24,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="По цене"
+        android:text="По цене(р./км.)"
         android:id="@+id/cargoOrderByCost"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/cargoOrderByAddDate"

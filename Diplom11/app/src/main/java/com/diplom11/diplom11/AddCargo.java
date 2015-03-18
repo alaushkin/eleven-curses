@@ -1,5 +1,6 @@
 package com.diplom11.diplom11;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,10 +17,12 @@ import android.widget.TextView;
 import com.diplom11.diplom11.CargoSearchTools.DictPair;
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -87,15 +90,24 @@ public class AddCargo extends ActionBarActivity {
 
         ArrayAdapter<Object> adapter;
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getBodyTypeArray().toArray());
+        ArrayList bodyTypeArray = new ArrayList();
+        bodyTypeArray.add(new DictPair("", ""));
+        bodyTypeArray.addAll(Dictionary.getBodyTypeArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, bodyTypeArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoBodyType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getLoadTypeArray().toArray());
+        ArrayList loadTypeArray = new ArrayList();
+        loadTypeArray.add(new DictPair("", ""));
+        loadTypeArray.addAll(Dictionary.getLoadTypeArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, loadTypeArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoLoadType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getDopArray().toArray());
+        ArrayList dopArray = new ArrayList();
+        dopArray.add(new DictPair("", ""));
+        dopArray.addAll(Dictionary.getDopArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, dopArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoDop.setAdapter(adapter);
 
@@ -116,11 +128,17 @@ public class AddCargo extends ActionBarActivity {
                     parseObject.put("weight", new BigDecimal(addCargoWeight.getText().toString()));
                     parseObject.put("volume", new BigDecimal(addCargoVolume.getText().toString()));
                     parseObject.put("cost", new BigDecimal(addCargoCost.getText().toString()));
-                    parseObject.put("arriveDate", new Date());
+                    parseObject.put("arriveDate", addCargoDate.getText().toString());
                     parseObject.put("user", ParseUser.getCurrentUser().getObjectId());
                     parseObject.put("state", 1);
                     parseObject.setACL(new ParseACL(ParseUser.getCurrentUser()));
-                    parseObject.saveInBackground();
+                    try {
+                        parseObject.save();
+                    } catch (ParseException e) {
+                        return;
+                    }
+                    Intent intent = new Intent(AddCargo.this, MyCargos.class);
+                    startActivity(intent);
                 } else {
                     addCargoError.setVisibility(View.VISIBLE);
                 }

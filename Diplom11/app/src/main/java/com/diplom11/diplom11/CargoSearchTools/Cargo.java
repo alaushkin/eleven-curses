@@ -1,8 +1,11 @@
 package com.diplom11.diplom11.CargoSearchTools;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -22,7 +25,9 @@ public class Cargo {
     private String dop;
     private Date createdAt;
     private String arriveDate;
+    private String id;
     private String userId;
+    private String userName;
 
     public Cargo(ParseObject object){
         loadingCity = (String) object.get("loadingCity");
@@ -39,6 +44,19 @@ public class Cargo {
         createdAt = object.getCreatedAt();
         arriveDate = (String) object.get("arriveDate");
         userId = (String) object.get("user");
+        id = object.getObjectId();
+
+        ParseQuery parseQuery = new ParseQuery("UserData");
+        parseQuery.whereEqualTo("userId", userId);
+        List list = null;
+        try {
+            list = parseQuery.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (Object o : list) {
+            userName = (String)((ParseObject) o).get("firstName") + " " + ((ParseObject) o).get("lastName");
+        }
     }
 
     @Override
@@ -56,7 +74,14 @@ public class Cargo {
         result.append("Цена за километр: " + cost + "\n");
         result.append("Дополнительно: " + Dictionary.getDopById(dop) + "\n");
         result.append("Дата добавления заявки: " + new java.sql.Date(createdAt.getTime()) + "\n");
-        result.append("Дата прибытия: " +arriveDate + "\n");
+        result.append("Дата прибытия: " + arriveDate + "\n");
+        result.append("Владелец: " + userName + "\n");
+        result.append("ИД владельца: " + userId + "\n");
+        //result.append("Дата прибытия: " +arriveDate + "\n");
         return result.toString();
+    }
+
+    public String getId(){
+        return id;
     }
 }

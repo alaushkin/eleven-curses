@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -22,8 +23,11 @@ import java.util.List;
 
 public class MyCargos extends ActionBarActivity {
     private Button addCargo;
+    private Button delCargo;
     private ListView myCargos;
     private ArrayList<Cargo> cargos = new ArrayList<>();
+
+    private int selectedCargo = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,7 @@ public class MyCargos extends ActionBarActivity {
 
     private void init(){
         addCargo = (Button) findViewById(R.id.addCargo);
+        delCargo = (Button) findViewById(R.id.delCargo);
         myCargos = (ListView) findViewById(R.id.myCargos);
 
         addCargo.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,12 @@ public class MyCargos extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MyCargos.this, AddCargo.class);
                 startActivity(intent);
+            }
+        });
+        delCargo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteSelectedCargo();
             }
         });
 
@@ -78,7 +89,34 @@ public class MyCargos extends ActionBarActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        ArrayAdapter<Object> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, cargos.toArray());
+
+        ArrayAdapter<Object> arrayAdapter = new ArrayAdapter(this, R.layout.cargi_choise, cargos.toArray());
         myCargos.setAdapter(arrayAdapter);
+        myCargos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        myCargos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedCargo = position;
+            }
+        });
+    }
+
+    private void deleteSelectedCargo(){
+        if(selectedCargo > -1) {
+            ParseQuery parseQuery = new ParseQuery("Cargo");
+            parseQuery.whereEqualTo("objectId",((Cargo) myCargos.getItemAtPosition(selectedCargo)).getId());
+            try {
+                ParseObject object = (ParseObject) parseQuery.find().get(0);
+                object.delete();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //ob.re
+            //(Cargo) myCargos.getSelectedItem();
+        }
     }
 }

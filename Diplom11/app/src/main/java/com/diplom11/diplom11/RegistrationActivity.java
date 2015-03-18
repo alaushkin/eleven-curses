@@ -71,7 +71,7 @@ public class RegistrationActivity extends ActionBarActivity {
         regErrorField = (TextView) findViewById(R.id.regErrorField);
         regSubmit = (Button) findViewById(R.id.regSubmit);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, new String[]{"ИП","ООО","ЗАО"});
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, new String[]{"ИП","ООО","ЗАО","Физ. лицо"});
         regOrg.setAdapter(adapter);
 
         regSubmit.setOnClickListener(new View.OnClickListener() {
