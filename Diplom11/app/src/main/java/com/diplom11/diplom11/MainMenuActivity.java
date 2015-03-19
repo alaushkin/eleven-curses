@@ -76,6 +76,14 @@ public class MainMenuActivity extends ActionBarActivity {
             }
         });
 
+        menuItem6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenuActivity.this, Cabinet.class);
+                startActivity(intent);
+            }
+        });
+
         try {
             ParseQuery parseQuery = new ParseQuery("dop");
             Dictionary.setDop(parseQuery.find());

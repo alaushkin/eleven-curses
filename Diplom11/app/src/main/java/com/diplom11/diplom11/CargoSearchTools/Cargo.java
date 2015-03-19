@@ -3,6 +3,7 @@ package com.diplom11.diplom11.CargoSearchTools;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.diplom11.diplom11.UserTools.User;
 
 import java.util.Date;
 import java.util.List;
@@ -26,8 +27,7 @@ public class Cargo {
     private Date createdAt;
     private String arriveDate;
     private String id;
-    private String userId;
-    private String userName;
+    private User owner;
 
     public Cargo(ParseObject object){
         loadingCity = (String) object.get("loadingCity");
@@ -43,19 +43,14 @@ public class Cargo {
         cost = Double.valueOf(object.get("cost").toString());
         createdAt = object.getCreatedAt();
         arriveDate = (String) object.get("arriveDate");
-        userId = (String) object.get("user");
         id = object.getObjectId();
 
         ParseQuery parseQuery = new ParseQuery("UserData");
-        parseQuery.whereEqualTo("userId", userId);
-        List list = null;
+        parseQuery.whereEqualTo("userId", object.get("user"));
         try {
-            list = parseQuery.find();
+            owner = new User((ParseObject)parseQuery.find().get(0));
         } catch (ParseException e) {
             e.printStackTrace();
-        }
-        for (Object o : list) {
-            userName = (String)((ParseObject) o).get("firstName") + " " + ((ParseObject) o).get("lastName");
         }
     }
 
@@ -75,9 +70,9 @@ public class Cargo {
         result.append("Дополнительно: " + Dictionary.getDopById(dop) + "\n");
         result.append("Дата добавления заявки: " + new java.sql.Date(createdAt.getTime()) + "\n");
         result.append("Дата прибытия: " + arriveDate + "\n");
-        result.append("Владелец: " + userName + "\n");
-        result.append("ИД владельца: " + userId + "\n");
-        //result.append("Дата прибытия: " +arriveDate + "\n");
+        result.append("Рейтинг владельца: " + owner.getReiting() + "\n");
+        result.append("ИД владельца: " + owner.getId() + "\n");
+        result.append("Дата прибытия: " +arriveDate + "\n");
         return result.toString();
     }
 
