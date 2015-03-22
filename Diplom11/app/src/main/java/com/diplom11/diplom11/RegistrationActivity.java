@@ -96,7 +96,10 @@ public class RegistrationActivity extends ActionBarActivity {
                     parseObject.put("orgType", regOrg.getSelectedItem());
                     parseObject.put("sumReit", 0);
                     parseObject.put("voteCount", 0);
-                    parseObject.setACL(new ParseACL(ParseUser.getCurrentUser()));
+                    ParseACL acl = new ParseACL();
+                    acl.setPublicReadAccess(true);
+                    acl.setPublicWriteAccess(true);
+                    parseObject.setACL(acl);
                     try {
                         parseObject.save();
                     } catch (ParseException e) {

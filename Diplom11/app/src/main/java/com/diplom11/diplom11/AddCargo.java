@@ -123,7 +123,10 @@ public class AddCargo extends ActionBarActivity {
                     parseObject.put("arriveDate", addCargoDate.getText().toString());
                     parseObject.put("user", ParseUser.getCurrentUser().getObjectId());
                     parseObject.put("state", 1);
-                    parseObject.setACL(new ParseACL(ParseUser.getCurrentUser()));
+                    ParseACL acl = new ParseACL();
+                    acl.setPublicReadAccess(true);
+                    acl.setPublicWriteAccess(true);
+                    parseObject.setACL(acl);
                     try {
                         parseObject.save();
                     } catch (ParseException e) {

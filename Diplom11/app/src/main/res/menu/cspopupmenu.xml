@@ -2,4 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/csItem1" android:title="Информация о владельце груза"
         android:orderInCategory="100"/>
+    <item android:id="@+id/csItem2" android:title="Показать на карте"
+        android:orderInCategory="100"/>
 </menu>

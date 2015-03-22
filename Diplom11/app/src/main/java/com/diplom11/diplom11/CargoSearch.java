@@ -175,6 +175,8 @@ public class CargoSearch extends ActionBarActivity {
                                         intent.putExtra("userId", ((Cargo) cargos.get(position)).getUserId());
                                         startActivity(intent);
                                         return true;
+                                    case R.id.csItem2:
+                                        return true;
                                     default:
                                         return false;
                                 }

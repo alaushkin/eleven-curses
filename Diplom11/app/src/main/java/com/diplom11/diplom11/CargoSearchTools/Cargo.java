@@ -47,11 +47,11 @@ public class Cargo {
         id = object.getObjectId();
 
         ParseQuery parseQuery = new ParseQuery("UserData");
-        parseQuery.whereEqualTo("user", object.get("user"));
+        String usrId = (String)object.get("user");
+        parseQuery.whereEqualTo("userId", usrId);
         try {
-            ArrayList list = (ArrayList) parseQuery.find();
-            owner = new User((ParseObject)list.get(0));
-        } catch (ParseException e) {
+            owner = new User((ParseObject)parseQuery.find().get(0));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
