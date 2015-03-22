@@ -1,6 +1,5 @@
 package com.diplom11.diplom11.CargoSearchTools;
 
-import com.parse.Parse;
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ public class Dictionary {
     private static HashMap<String,String> dop = new HashMap();
     private static HashMap<String,String> loadType = new HashMap();
     private static HashMap<String,String> bodyType = new HashMap();
+    private static HashMap<String,String> payType = new HashMap();
 
     static public void setDop(List list){
         for(Object object : list){
@@ -38,16 +38,39 @@ public class Dictionary {
         }
     }
 
+    static public void setPayType(List list){
+        for(Object object : list){
+            ParseObject parseObject = (ParseObject) object;
+            payType.put(parseObject.getObjectId(), (String) parseObject.get("value"));
+        }
+    }
+
     static public String getDopById(String key){
-        return dop.get(key);
+        if(key != null) {
+            return dop.get(key);
+        }
+        return "";
     }
 
     static public String getLoadTypeById(String key){
-        return loadType.get(key);
+        if(key != null) {
+            return loadType.get(key);
+        }
+        return "";
     }
 
     static public String getBodyTypeById(String key){
-        return bodyType.get(key);
+        if(key != null) {
+            return bodyType.get(key);
+        }
+        return "";
+    }
+
+    static public String getPayTypeById(String key){
+        if(key != null) {
+            return payType.get(key);
+        }
+        return "";
     }
 
     static public ArrayList<DictPair> getDopArray(){
@@ -73,6 +96,16 @@ public class Dictionary {
     static public ArrayList<DictPair> getBodyTypeArray(){
         ArrayList<DictPair> result = new ArrayList<>();
         Iterator it = bodyType.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            result.add(new DictPair((String)pair.getKey(),(String)pair.getValue()));
+        }
+        return result;
+    }
+
+    static public ArrayList<DictPair> getPayTypeArray(){
+        ArrayList<DictPair> result = new ArrayList<>();
+        Iterator it = payType.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             result.add(new DictPair((String)pair.getKey(),(String)pair.getValue()));

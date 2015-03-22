@@ -71,9 +71,9 @@
         android:layout_below="@+id/menuItem4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:layout_alignRight="@+id/menuItem4"
-        android:layout_alignEnd="@+id/menuItem4" />
+        android:layout_marginTop="17dp"
+        android:layout_alignRight="@+id/menuItem6"
+        android:layout_alignEnd="@+id/menuItem6" />
 
     <TextView
         android:layout_width="wrap_content"

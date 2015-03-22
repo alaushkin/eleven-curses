@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 
 import com.diplom11.diplom11.CargoSearchTools.Cargo;
@@ -38,7 +40,7 @@ public class CargoSearch extends ActionBarActivity {
     private String toCity;
     private String bodyType;
     private String loadType;
-    private String dop;
+    private String payType;
     private Double fromWeight;
     private Double toWeight;
     private Double fromVolume;
@@ -92,7 +94,7 @@ public class CargoSearch extends ActionBarActivity {
         }
         bodyType = intent.getStringExtra("bodyType");
         loadType = intent.getStringExtra("loadType");
-        dop = intent.getStringExtra("dop");
+        payType = intent.getStringExtra("payType");
         try {
             fromWeight = Double.parseDouble(intent.getStringExtra("fromWeight"));
         } catch (Exception e) {
@@ -151,6 +153,37 @@ public class CargoSearch extends ActionBarActivity {
                 loadCargos();
             }
         });
+
+        listViewCargo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                PopupMenu popupMenu = new PopupMenu(CargoSearch.this, view);
+                popupMenu.inflate(R.menu.cspopupmenu);
+
+                popupMenu
+                        .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                // Toast.makeText(PopupMenuDemoActivity.this,
+                                // item.toString(), Toast.LENGTH_LONG).show();
+                                // return true;
+                                switch (item.getItemId()) {
+
+                                    case R.id.csItem1:
+                                        Intent intent = new Intent(CargoSearch.this, UserInfo.class);
+                                        intent.putExtra("userId", ((Cargo) cargos.get(position)).getUserId());
+                                        startActivity(intent);
+                                        return true;
+                                    default:
+                                        return false;
+                                }
+                            }
+                        });
+
+                popupMenu.show();
+            }
+        });
     }
 
     private void loadCargos() {
@@ -164,8 +197,8 @@ public class CargoSearch extends ActionBarActivity {
             parseQuery.whereEqualTo("bodyType", bodyType);
         if (loadType != null && !loadType.isEmpty())
             parseQuery.whereEqualTo("loadType", loadType);
-        if (dop != null && !dop.isEmpty())
-            parseQuery.whereEqualTo("dopId", dop);
+        if (payType != null && !payType.isEmpty())
+            parseQuery.whereEqualTo("payType", payType);
         if (fromWeight != null)
             parseQuery.whereGreaterThanOrEqualTo("weight", fromWeight);
         if (toWeight != null)

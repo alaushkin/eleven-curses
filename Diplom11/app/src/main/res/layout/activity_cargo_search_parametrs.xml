@@ -87,14 +87,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Дополнительно"
+        android:text="Тип оплаты"
         android:id="@+id/textView25"
         android:layout_below="@+id/cspLoadType"/>
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cspDop"
+        android:id="@+id/cspPayType"
         android:layout_below="@+id/textView25"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -107,7 +107,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Вес(т.) от"
         android:id="@+id/textView18"
-        android:layout_below="@+id/cspDop"
+        android:layout_below="@+id/cspPayType"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:minWidth="100dp" />
@@ -137,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cspToWeight"
-        android:layout_below="@+id/cspDop"
+        android:layout_below="@+id/cspPayType"
         android:layout_toRightOf="@+id/textView19"
         android:layout_toEndOf="@+id/textView19"
         android:minWidth="100dp"

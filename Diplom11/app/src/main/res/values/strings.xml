@@ -10,4 +10,7 @@
     <string name="title_activity_add_cargo">AddCargo</string>
     <string name="title_activity_cabinet">Cabinet</string>
     <string name="title_activity_cargo_search_parametrs">CargoSearchParametrs</string>
+    <string name="title_activity_user_info">UserInfo</string>
+    <string name="title_activity_users_search_params">UsersSearchParams</string>
+    <string name="title_activity_users_search">UsersSearch</string>
 </resources>

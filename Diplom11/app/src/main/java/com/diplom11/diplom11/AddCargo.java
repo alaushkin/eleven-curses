@@ -38,7 +38,7 @@ public class AddCargo extends ActionBarActivity {
     private EditText addCargoDate;
     private Spinner addCargoBodyType;
     private Spinner addCargoLoadType;
-    private Spinner addCargoDop;
+    private Spinner addCargoPayType;
     private Button addCargoButton;
     private TextView addCargoError;
 
@@ -84,32 +84,24 @@ public class AddCargo extends ActionBarActivity {
         addCargoDate = (EditText) findViewById(R.id.addCargoDate);
         addCargoBodyType = (Spinner) findViewById(R.id.addCargoBodyType);
         addCargoLoadType = (Spinner) findViewById(R.id.addCargoLoadType);
-        addCargoDop = (Spinner) findViewById(R.id.addCargoDop);
+        addCargoPayType = (Spinner) findViewById(R.id.addCargoPayType);
         addCargoButton = (Button) findViewById(R.id.addCargoButton);
         addCargoError = (TextView) findViewById(R.id.addCargoError);
 
         ArrayAdapter<Object> adapter;
 
-        ArrayList bodyTypeArray = new ArrayList();
-        bodyTypeArray.add(new DictPair("", ""));
-        bodyTypeArray.addAll(Dictionary.getBodyTypeArray());
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, bodyTypeArray);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getBodyTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoBodyType.setAdapter(adapter);
 
-        ArrayList loadTypeArray = new ArrayList();
-        loadTypeArray.add(new DictPair("", ""));
-        loadTypeArray.addAll(Dictionary.getLoadTypeArray());
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, loadTypeArray);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getLoadTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoLoadType.setAdapter(adapter);
 
-        ArrayList dopArray = new ArrayList();
-        dopArray.add(new DictPair("", ""));
-        dopArray.addAll(Dictionary.getDopArray());
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, dopArray);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getPayTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        addCargoDop.setAdapter(adapter);
+        addCargoPayType.setAdapter(adapter);
+
 
         addCargoError.setVisibility(View.INVISIBLE);
         addCargoButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +113,7 @@ public class AddCargo extends ActionBarActivity {
                     parseObject.put("unloadingCity", addCargoUnLoadCity.getText().toString().toUpperCase());
                     parseObject.put("bodyType", ((DictPair)addCargoBodyType.getSelectedItem()).getKey());
                     parseObject.put("loadType", ((DictPair)addCargoLoadType.getSelectedItem()).getKey());
-                    parseObject.put("dopId", ((DictPair)addCargoDop.getSelectedItem()).getKey());
+                    parseObject.put("payType", ((DictPair)addCargoPayType.getSelectedItem()).getKey());
                     parseObject.put("xSize", new BigDecimal(addCargoXSize.getText().toString()));
                     parseObject.put("ySize", new BigDecimal(addCargoYSize.getText().toString()));
                     parseObject.put("zSize", new BigDecimal(addCargoZSize.getText().toString()));

@@ -22,7 +22,7 @@ public class CargoSearchParametrs extends ActionBarActivity {
     private EditText cspToCity;
     private Spinner cspBodyType;
     private Spinner cspLoadType;
-    private Spinner cspDop;
+    private Spinner cspPayType;
     private EditText cspFromWeight;
     private EditText cspToWeight;
     private EditText cspFromVolume;
@@ -65,7 +65,7 @@ public class CargoSearchParametrs extends ActionBarActivity {
         cspToCity = (EditText) findViewById(R.id.cspToCity);
         cspBodyType = (Spinner) findViewById(R.id.cspBodyType);
         cspLoadType = (Spinner) findViewById(R.id.cspLoadType);
-        cspDop = (Spinner) findViewById(R.id.cspDop);
+        cspPayType = (Spinner) findViewById(R.id.cspPayType);
         cspFromWeight = (EditText) findViewById(R.id.cspFromWeight);
         cspToWeight = (EditText) findViewById(R.id.cspToWeight);
         cspFromVolume = (EditText) findViewById(R.id.cspFromVolume);
@@ -89,12 +89,12 @@ public class CargoSearchParametrs extends ActionBarActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cspLoadType.setAdapter(adapter);
 
-        ArrayList dopArray = new ArrayList();
-        dopArray.add(new DictPair("", ""));
-        dopArray.addAll(Dictionary.getDopArray());
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, dopArray);
+        ArrayList payTypeArray = new ArrayList();
+        payTypeArray.add(new DictPair("", ""));
+        payTypeArray.addAll(Dictionary.getPayTypeArray());
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, payTypeArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cspDop.setAdapter(adapter);
+        cspPayType.setAdapter(adapter);
 
         cspSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +105,7 @@ public class CargoSearchParametrs extends ActionBarActivity {
                     intent.putExtra("toCity", cspToCity.getText().toString().trim());
                     intent.putExtra("bodyType", ((DictPair) cspBodyType.getSelectedItem()).getKey().trim());
                     intent.putExtra("loadType", ((DictPair) cspLoadType.getSelectedItem()).getKey().trim());
-                    intent.putExtra("dop", ((DictPair) cspDop.getSelectedItem()).getKey().trim());
+                    intent.putExtra("payType", ((DictPair) cspPayType.getSelectedItem()).getKey().trim());
                     intent.putExtra("fromWeight", cspFromWeight.getText().toString().trim());
                     intent.putExtra("toWeight", cspToWeight.getText().toString().trim());
                     intent.putExtra("fromVolume", cspFromVolume.getText().toString().trim());
@@ -127,6 +127,6 @@ public class CargoSearchParametrs extends ActionBarActivity {
                 && cspDate.getText().toString().isEmpty()
                 && ((DictPair) cspBodyType.getSelectedItem()).getKey().isEmpty()
                 && ((DictPair) cspLoadType.getSelectedItem()).getKey().isEmpty()
-                && ((DictPair) cspDop.getSelectedItem()).getKey().isEmpty());
+                && ((DictPair) cspPayType.getSelectedItem()).getKey().isEmpty());
     }
 }

@@ -5,6 +5,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.diplom11.diplom11.UserTools.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Cargo {
     private double weight;
     private double volume;
     private double cost;
-    private String dop;
+    private String payType;
     private Date createdAt;
     private String arriveDate;
     private String id;
@@ -34,7 +35,7 @@ public class Cargo {
         unloadingCity = (String) object.get("unloadingCity");
         bodyType = (String) object.get("bodyType");
         loadType = (String) object.get("loadType");
-        dop = (String) object.get("dopId");
+        payType = (String) object.get("payType");
         xSize = Double.valueOf(object.get("xSize").toString());
         ySize = Double.valueOf(object.get("ySize").toString());
         zSize = Double.valueOf(object.get("zSize").toString());
@@ -46,9 +47,10 @@ public class Cargo {
         id = object.getObjectId();
 
         ParseQuery parseQuery = new ParseQuery("UserData");
-        parseQuery.whereEqualTo("userId", object.get("user"));
+        parseQuery.whereEqualTo("user", object.get("user"));
         try {
-            owner = new User((ParseObject)parseQuery.find().get(0));
+            ArrayList list = (ArrayList) parseQuery.find();
+            owner = new User((ParseObject)list.get(0));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -67,16 +69,19 @@ public class Cargo {
         result.append("Вес: " + weight + "\n");
         result.append("Объем: " + volume + "\n");
         result.append("Цена за километр: " + cost + "\n");
-        result.append("Дополнительно: " + Dictionary.getDopById(dop) + "\n");
+        result.append("Тип оплаты: " + Dictionary.getPayTypeById(payType) + "\n");
         result.append("Дата добавления заявки: " + new java.sql.Date(createdAt.getTime()) + "\n");
         result.append("Дата прибытия: " + arriveDate + "\n");
         result.append("Рейтинг владельца: " + owner.getReiting() + "\n");
-        result.append("ИД владельца: " + owner.getId() + "\n");
-        result.append("Дата прибытия: " +arriveDate + "\n");
+        result.append("ИД владельца: " + owner.getUserId() + "\n");
         return result.toString();
     }
 
     public String getId(){
         return id;
+    }
+
+    public String getUserId(){
+        return owner.getUserId();
     }
 }

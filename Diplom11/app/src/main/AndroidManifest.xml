@@ -40,15 +40,30 @@
         </activity>
         <activity
             android:name=".AddCargo"
-            android:label="Добавить груз" >
+            android:label="Добавить груз"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Cabinet"
-            android:label="@string/title_activity_cabinet" >
+            android:label="Личный кабинет"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CargoSearchParametrs"
-            android:label="Параметры поиска" >
+            android:label="Параметры поиска"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".UserInfo"
+            android:label="@string/title_activity_user_info" >
+        </activity>
+        <activity
+            android:name=".UsersSearchParams"
+            android:label="@string/title_activity_users_search_params" >
+        </activity>
+        <activity
+            android:name=".UsersSearch"
+            android:label="@string/title_activity_users_search" >
         </activity>
     </application>
 

@@ -76,6 +76,14 @@ public class MainMenuActivity extends ActionBarActivity {
             }
         });
 
+        menuItem5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenuActivity.this, UsersSearchParams.class);
+                startActivity(intent);
+            }
+        });
+
         menuItem6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +99,8 @@ public class MainMenuActivity extends ActionBarActivity {
             Dictionary.setBodyType(parseQuery.find());
             parseQuery = new ParseQuery("LoadType");
             Dictionary.setLoadType(parseQuery.find());
+            parseQuery = new ParseQuery("PayType");
+            Dictionary.setPayType(parseQuery.find());
         } catch (ParseException e) {
             e.printStackTrace();
         }

@@ -217,31 +217,41 @@
         android:layout_alignLeft="@+id/textView14"
         android:layout_alignStart="@+id/textView14" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Тип корпуса"
+        android:id="@+id/textView35"
+        android:layout_below="@+id/addCargoError"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addCargoBodyType"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/addCargoDate"
-        android:layout_alignEnd="@+id/addCargoDate"
-        android:layout_below="@+id/addCargoError"/>
+        android:layout_below="@+id/textView35"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Тип загрузки"
+        android:id="@+id/textView36"
+        android:layout_below="@+id/addCargoBodyType" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addCargoLoadType"
-        android:layout_below="@+id/addCargoBodyType"
+        android:layout_below="@+id/textView36"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addCargoDop"
-        android:layout_below="@+id/addCargoLoadType"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -252,5 +262,25 @@
         android:id="@+id/addCargoButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Тип оплаты: "
+        android:id="@+id/textView37"
+        android:layout_below="@+id/addCargoLoadType"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addCargoPayType"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView37"
+        android:layout_alignRight="@+id/addCargoLoadType"
+        android:layout_alignEnd="@+id/addCargoLoadType" />
 
 </RelativeLayout>

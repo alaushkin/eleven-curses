@@ -14,6 +14,7 @@ public class User {
     private Double sumReit;
     private Double voteCount;
     private String phone;
+    private String userId;
     private String id;
 
     public User(ParseObject user) {
@@ -25,6 +26,7 @@ public class User {
         sumReit = Double.valueOf(user.get("sumReit").toString());
         voteCount = Double.valueOf(user.get("voteCount").toString());
         phone = (String) user.get("phone");
+        userId = (String) user.get("userId");
         if (sumReit == null) {
             sumReit = 0.0;
         }
@@ -36,7 +38,7 @@ public class User {
     }
 
     public String toString() {
-        return "ID: " + id + "\n"
+        return "ID: " + userId + "\n"
                 + "e-mail: " + email + "\n"
                 + "Фамилия: " + lastName + "\n"
                 + "Имя: " + firstName + "\n"
@@ -77,7 +79,7 @@ public class User {
         return phone;
     }
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 }
