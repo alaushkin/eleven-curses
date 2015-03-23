@@ -72,7 +72,7 @@ public class AddCargo extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init(){
+    private void init() {
         addCargoLoadCity = (EditText) findViewById(R.id.addCargoLoadCity);
         addCargoUnLoadCity = (EditText) findViewById(R.id.addCargoUnLoadCity);
         addCargoXSize = (EditText) findViewById(R.id.addCargoXSize);
@@ -107,19 +107,25 @@ public class AddCargo extends ActionBarActivity {
         addCargoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validate()){
+                if (validate()) {
                     ParseObject parseObject = new ParseObject("Cargo");
                     parseObject.put("loadingCity", addCargoLoadCity.getText().toString().toUpperCase());
                     parseObject.put("unloadingCity", addCargoUnLoadCity.getText().toString().toUpperCase());
-                    parseObject.put("bodyType", ((DictPair)addCargoBodyType.getSelectedItem()).getKey());
-                    parseObject.put("loadType", ((DictPair)addCargoLoadType.getSelectedItem()).getKey());
-                    parseObject.put("payType", ((DictPair)addCargoPayType.getSelectedItem()).getKey());
-                    parseObject.put("xSize", new BigDecimal(addCargoXSize.getText().toString()));
-                    parseObject.put("ySize", new BigDecimal(addCargoYSize.getText().toString()));
-                    parseObject.put("zSize", new BigDecimal(addCargoZSize.getText().toString()));
-                    parseObject.put("weight", new BigDecimal(addCargoWeight.getText().toString()));
-                    parseObject.put("volume", new BigDecimal(addCargoVolume.getText().toString()));
-                    parseObject.put("cost", new BigDecimal(addCargoCost.getText().toString()));
+                    parseObject.put("bodyType", ((DictPair) addCargoBodyType.getSelectedItem()).getKey());
+                    parseObject.put("loadType", ((DictPair) addCargoLoadType.getSelectedItem()).getKey());
+                    parseObject.put("payType", ((DictPair) addCargoPayType.getSelectedItem()).getKey());
+                    if (addCargoXSize.getText().toString() != null && !addCargoXSize.getText().toString().isEmpty())
+                        parseObject.put("xSize", new BigDecimal(addCargoXSize.getText().toString()));
+                    if (addCargoYSize.getText().toString() != null && !addCargoYSize.getText().toString().isEmpty())
+                        parseObject.put("ySize", new BigDecimal(addCargoYSize.getText().toString()));
+                    if (addCargoZSize.getText().toString() != null && !addCargoZSize.getText().toString().isEmpty())
+                        parseObject.put("zSize", new BigDecimal(addCargoZSize.getText().toString()));
+                    if (addCargoWeight.getText().toString() != null && !addCargoWeight.getText().toString().isEmpty())
+                        parseObject.put("weight", new BigDecimal(addCargoWeight.getText().toString()));
+                    if (addCargoVolume.getText().toString() != null && !addCargoVolume.getText().toString().isEmpty())
+                        parseObject.put("volume", new BigDecimal(addCargoVolume.getText().toString()));
+                    if (addCargoCost.getText().toString() != null && !addCargoCost.getText().toString().isEmpty())
+                        parseObject.put("cost", new BigDecimal(addCargoCost.getText().toString()));
                     parseObject.put("arriveDate", addCargoDate.getText().toString());
                     parseObject.put("user", ParseUser.getCurrentUser().getObjectId());
                     parseObject.put("state", 1);
@@ -142,15 +148,10 @@ public class AddCargo extends ActionBarActivity {
 
     }
 
-    private boolean validate(){
+    private boolean validate() {
         return !(addCargoLoadCity.getText().toString().isEmpty()
                 || addCargoUnLoadCity.getText().toString().isEmpty()
-                || addCargoXSize.getText().toString().isEmpty()
-                || addCargoYSize.getText().toString().isEmpty()
-                || addCargoZSize.getText().toString().isEmpty()
                 || addCargoWeight.getText().toString().isEmpty()
-                || addCargoVolume.getText().toString().isEmpty()
-                || addCargoCost.getText().toString().isEmpty()
-                || addCargoDate.getText().toString().isEmpty());
+                || addCargoVolume.getText().toString().isEmpty());
     }
 }

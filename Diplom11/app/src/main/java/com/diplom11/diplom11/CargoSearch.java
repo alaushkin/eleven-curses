@@ -160,28 +160,24 @@ public class CargoSearch extends ActionBarActivity {
                 PopupMenu popupMenu = new PopupMenu(CargoSearch.this, view);
                 popupMenu.inflate(R.menu.cspopupmenu);
 
-                popupMenu
-                        .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                // Toast.makeText(PopupMenuDemoActivity.this,
-                                // item.toString(), Toast.LENGTH_LONG).show();
-                                // return true;
-                                switch (item.getItemId()) {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
 
-                                    case R.id.csItem1:
-                                        Intent intent = new Intent(CargoSearch.this, UserInfo.class);
-                                        intent.putExtra("userId", ((Cargo) cargos.get(position)).getUserId());
-                                        startActivity(intent);
-                                        return true;
-                                    case R.id.csItem2:
-                                        return true;
-                                    default:
-                                        return false;
-                                }
-                            }
-                        });
+                            case R.id.csItem1:
+                                Intent intent = new Intent(CargoSearch.this, UserInfo.class);
+                                intent.putExtra("userId", ((Cargo) cargos.get(position)).getUserId());
+                                startActivity(intent);
+                                return true;
+                            case R.id.csItem2:
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
 
                 popupMenu.show();
             }

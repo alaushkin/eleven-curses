@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -72,5 +73,20 @@ public class UsersSearchParams extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        uspSearchManualy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UsersSearchParams.this, UsersSearch.class);
+                intent.putExtra("lastName", uspLastName.getText().toString().trim());
+                intent.putExtra("firstName", uspFirstName.getText().toString().trim());
+                intent.putExtra("midName", uspMidName.getText().toString().trim());
+                intent.putExtra("email", uspEmail.getText().toString().trim());
+                intent.putExtra("orgType", (String)uspOrgType.getSelectedItem());
+                startActivity(intent);
+            }
+        });
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, new String[]{"", "ИП", "ООО", "ЗАО", "Физ. лицо"});
+        uspOrgType.setAdapter(adapter);
     }
 }

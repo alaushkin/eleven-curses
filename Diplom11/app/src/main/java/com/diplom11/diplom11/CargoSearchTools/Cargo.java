@@ -36,12 +36,31 @@ public class Cargo {
         bodyType = (String) object.get("bodyType");
         loadType = (String) object.get("loadType");
         payType = (String) object.get("payType");
-        xSize = Double.valueOf(object.get("xSize").toString());
-        ySize = Double.valueOf(object.get("ySize").toString());
-        zSize = Double.valueOf(object.get("zSize").toString());
-        weight = Double.valueOf(object.get("weight").toString());
-        volume = Double.valueOf(object.get("volume").toString());
-        cost = Double.valueOf(object.get("cost").toString());
+        Number value;
+        value = (Number)object.get("xSize");
+        if(value != null) {
+            xSize = value.doubleValue();
+        }
+        value = (Number)object.get("ySize");
+        if(value != null) {
+            ySize = value.doubleValue();
+        }
+        value = (Number)object.get("zSize");
+        if(value != null) {
+            zSize = value.doubleValue();
+        }
+        value = (Number)object.get("weight");
+        if(value != null) {
+            weight = value.doubleValue();
+        }
+        value = (Number)object.get("volume");
+        if(value != null) {
+            volume = value.doubleValue();
+        }
+        value = (Number)object.get("cost");
+        if(value != null) {
+            cost = value.doubleValue();
+        }
         createdAt = object.getCreatedAt();
         arriveDate = (String) object.get("arriveDate");
         id = object.getObjectId();
