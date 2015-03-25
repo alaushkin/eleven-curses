@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
@@ -15,12 +16,13 @@ import com.parse.ParseQuery;
 
 
 public class MainMenuActivity extends ActionBarActivity {
-    private TextView menuItem1;
-    private TextView menuItem2;
-    private TextView menuItem3;
-    private TextView menuItem4;
-    private TextView menuItem5;
-    private TextView menuItem6;
+    private Button menuItem1;
+    private Button menuItem2;
+    private Button menuItem3;
+    private Button menuItem4;
+    private Button menuItem5;
+    private Button menuItem6;
+    private Button menuItem7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +55,13 @@ public class MainMenuActivity extends ActionBarActivity {
     }
 
     private void init(){
-        menuItem1 = (TextView) findViewById(R.id.menuItem1);
-        menuItem2 = (TextView) findViewById(R.id.menuItem2);
-        menuItem3 = (TextView) findViewById(R.id.menuItem3);
-        menuItem4 = (TextView) findViewById(R.id.menuItem4);
-        menuItem5 = (TextView) findViewById(R.id.menuItem5);
-        menuItem6 = (TextView) findViewById(R.id.menuItem6);
+        menuItem1 = (Button) findViewById(R.id.menuItem1);
+        menuItem2 = (Button) findViewById(R.id.menuItem2);
+        menuItem3 = (Button) findViewById(R.id.menuItem3);
+        menuItem4 = (Button) findViewById(R.id.menuItem4);
+        menuItem5 = (Button) findViewById(R.id.menuItem5);
+        menuItem6 = (Button) findViewById(R.id.menuItem6);
+        menuItem7 = (Button) findViewById(R.id.menuItem7);
 
         menuItem1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +95,14 @@ public class MainMenuActivity extends ActionBarActivity {
             }
         });
 
+        menuItem7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenuActivity.this, AutorizationActivity.class);
+                startActivity(intent);
+            }
+        });
+
         try {
             ParseQuery parseQuery = new ParseQuery("dop");
             Dictionary.setDop(parseQuery.find());
@@ -104,5 +115,9 @@ public class MainMenuActivity extends ActionBarActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

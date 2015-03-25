@@ -6,87 +6,131 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.diplom11.diplom11.MainMenuActivity">
 
-    <TextView
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="1. Поиск грузов"
-        android:id="@+id/menuItem1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/scrollView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#ffc0b0ae" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="2. Мой автотранспорт "
-        android:id="@+id/menuItem2"
-        android:background="#ffc0b0ae"
-        android:layout_below="@+id/menuItem1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="3. Поиск автотранспорта"
-        android:id="@+id/menuItem3"
-        android:background="#ffc0b0ae"
-        android:layout_below="@+id/menuItem2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="18dp"
-        android:layout_alignRight="@+id/menuItem2"
-        android:layout_alignEnd="@+id/menuItem2" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Поиск грузов"
+                android:id="@+id/menuItem1"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:minWidth="275dp"
+                android:minHeight="50dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="22dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="4. Ваши грузы"
-        android:id="@+id/menuItem4"
-        android:background="#ffc0b0ae"
-        android:layout_below="@+id/menuItem3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:layout_alignRight="@+id/menuItem3"
-        android:layout_alignEnd="@+id/menuItem3" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Мой автотранспорт "
+                android:id="@+id/menuItem2"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:layout_below="@+id/menuItem1"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:minWidth="275dp"
+                android:minHeight="50dp"
+                android:layout_marginBottom="11dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="5. Поиск участников "
-        android:id="@+id/menuItem5"
-        android:background="#ffc0b0ae"
-        android:layout_below="@+id/menuItem4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp"
-        android:layout_alignRight="@+id/menuItem6"
-        android:layout_alignEnd="@+id/menuItem6" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Поиск автотранспорта"
+                android:id="@+id/menuItem3"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:layout_below="@+id/menuItem2"
+                android:layout_alignLeft="@+id/menuItem2"
+                android:layout_alignStart="@+id/menuItem2"
+                android:minHeight="50dp"
+                android:minWidth="275dp"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:layout_marginBottom="11dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="6. Кабинет"
-        android:id="@+id/menuItem6"
-        android:background="#ffc0b0ae"
-        android:layout_below="@+id/menuItem5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="14dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ваши грузы"
+                android:id="@+id/menuItem4"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:layout_below="@+id/menuItem3"
+                android:layout_alignLeft="@+id/menuItem3"
+                android:layout_alignStart="@+id/menuItem3"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:minWidth="275dp"
+                android:minHeight="50dp"
+                android:layout_marginBottom="11dp" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Поиск участников "
+                android:id="@+id/menuItem5"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:layout_below="@+id/menuItem4"
+                android:layout_alignLeft="@+id/menuItem4"
+                android:layout_alignStart="@+id/menuItem4"
+                android:minHeight="50dp"
+                android:minWidth="275dp"
+                android:layout_marginBottom="11dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Кабинет"
+                android:id="@+id/menuItem6"
+                android:background="@drawable/menu_button_blue"
+                android:textColor="#ffffffff"
+                android:minWidth="275dp"
+                android:minHeight="50dp"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:layout_below="@+id/menuItem5"
+                android:layout_alignLeft="@+id/menuItem5"
+                android:layout_alignStart="@+id/menuItem5"
+                android:layout_marginBottom="11dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Выход"
+                android:id="@+id/menuItem7"
+                android:background="@drawable/menu_button_red"
+                android:textColor="#ff000000"
+                android:minWidth="275dp"
+                android:minHeight="50dp"
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:layout_below="@+id/menuItem6"
+                android:layout_alignLeft="@+id/menuItem6"
+                android:layout_alignStart="@+id/menuItem6"
+                android:layout_marginBottom="11dp" />
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

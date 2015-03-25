@@ -172,6 +172,8 @@ public class CargoSearch extends ActionBarActivity {
                                 startActivity(intent);
                                 return true;
                             case R.id.csItem2:
+                                Intent intent1 = new Intent(CargoSearch.this, MapsActivity.class);
+                                startActivity(intent1);
                                 return true;
                             default:
                                 return false;

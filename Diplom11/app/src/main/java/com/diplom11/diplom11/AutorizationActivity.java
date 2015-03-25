@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,6 @@ public class AutorizationActivity extends ActionBarActivity {
     private TextView errorField;
     private TextView registration;
     private Button signIn;
-    private ProgressBar autorizProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +63,11 @@ public class AutorizationActivity extends ActionBarActivity {
     private void init(){
         SharedPreferences sPref;
         sPref = getPreferences(MODE_PRIVATE);
-        autorizProgressBar = (ProgressBar) findViewById(R.id.autorizProgressBar);
         login = (EditText) findViewById(R.id.login);
         password = (EditText) findViewById(R.id.password);
         errorField = (TextView) findViewById(R.id.errorField);
         registration = (TextView) findViewById(R.id.registration);
         signIn = (Button) findViewById(R.id.signIn);
-        autorizProgressBar.setVisibility(View.INVISIBLE);
-
         login.setText(sPref.getString("login", ""));
         password.setText(sPref.getString("password", ""));
 
@@ -107,15 +104,15 @@ public class AutorizationActivity extends ActionBarActivity {
             return false;
         }
         try {
-            autorizProgressBar.setVisibility(View.VISIBLE);
             ParseUser.logIn(login.getText().toString(), password.getText().toString());
         } catch (ParseException e) {
             errorField.setText("Неправильный логин/пароль.");
             return false;
-        } finally {
-            autorizProgressBar.setVisibility(View.INVISIBLE);
         }
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }
