@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.diplom11.diplom11.CargoSearchTools.DictPair;
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
@@ -99,20 +100,20 @@ public class CargoSearchParametrs extends ActionBarActivity {
         cspSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()) {
-                    Intent intent = new Intent(CargoSearchParametrs.this, CargoSearch.class);
-                    intent.putExtra("fromCity", cspFromCity.getText().toString().trim());
-                    intent.putExtra("toCity", cspToCity.getText().toString().trim());
-                    intent.putExtra("bodyType", ((DictPair) cspBodyType.getSelectedItem()).getKey().trim());
-                    intent.putExtra("loadType", ((DictPair) cspLoadType.getSelectedItem()).getKey().trim());
-                    intent.putExtra("payType", ((DictPair) cspPayType.getSelectedItem()).getKey().trim());
-                    intent.putExtra("fromWeight", cspFromWeight.getText().toString().trim());
-                    intent.putExtra("toWeight", cspToWeight.getText().toString().trim());
-                    intent.putExtra("fromVolume", cspFromVolume.getText().toString().trim());
-                    intent.putExtra("toVolume", cspToVolume.getText().toString().trim());
-                    intent.putExtra("date", cspDate.getText().toString().trim());
-                    startActivity(intent);
-                }
+                if (!validate()) return;
+
+                CargoSearch_.intent(CargoSearchParametrs.this)
+                        .fromCity   ( cspFromCity.getText().toString().trim()   )
+                        .toCity     ( cspToCity.getText().toString().trim()     )
+                        .bodyType   ( ((DictPair) cspBodyType.getSelectedItem()).getKey().trim() )
+                        .loadType   ( ((DictPair) cspLoadType.getSelectedItem()).getKey().trim() )
+                        .payType    ( ((DictPair) cspPayType.getSelectedItem()).getKey().trim() )
+                        .date       ( cspDate.getText().toString().trim())
+                        .fromWeight ( getDouble(cspFromWeight ) )
+                        .toWeight   ( getDouble(cspToWeight) )
+                        .fromVolume ( getDouble(cspFromVolume) )
+                        .toVolume   ( getDouble(cspToVolume) )
+                        .start();
             }
         });
     }
@@ -128,5 +129,13 @@ public class CargoSearchParametrs extends ActionBarActivity {
                 && ((DictPair) cspBodyType.getSelectedItem()).getKey().isEmpty()
                 && ((DictPair) cspLoadType.getSelectedItem()).getKey().isEmpty()
                 && ((DictPair) cspPayType.getSelectedItem()).getKey().isEmpty());
+    }
+
+    Double  getDouble(TextView textView) {
+        try {
+            return Double.parseDouble(textView.getText().toString().trim());
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

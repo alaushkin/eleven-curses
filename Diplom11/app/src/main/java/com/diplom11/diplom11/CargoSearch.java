@@ -21,169 +21,94 @@ import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.ViewById;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@EActivity(R.layout.activity_cargo_search)
 public class CargoSearch extends ActionBarActivity {
-    private ListView listViewCargo;
+    @ViewById ListView listViewCargo;
+    @ViewById Button cargoOrderByAddDate, cargoOrderByCost, cargoOrderByArriveDate;
+
+    @Extra String date, fromCity, toCity, bodyType, loadType, payType;
+    @Extra Double fromWeight, toWeight, fromVolume, toVolume;
+
     private ArrayList<Cargo> cargos = new ArrayList<>();
     private int orderMode;
-    private Button cargoOrderByAddDate;
-    private Button cargoOrderByCost;
-    private Button cargoOrderByArriveDate;
     private Intent intent;
-
-    private String fromCity;
-    private String toCity;
-    private String bodyType;
-    private String loadType;
-    private String payType;
-    private Double fromWeight;
-    private Double toWeight;
-    private Double fromVolume;
-    private Double toVolume;
-    private String date;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cargo_search);
-        init();
-    }
+    public PopupMenu popupMenu;
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_cargo_search, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    @Click void cargoOrderByAddDate(){
+        if (orderMode == 0) {
+            orderMode = 1;
+        } else {
+            orderMode = 0;
         }
-
-        return super.onOptionsItemSelected(item);
+        loadCargos();
     }
 
-    private void init() {
-        listViewCargo = (ListView) findViewById(R.id.listViewCargo);
-        cargoOrderByAddDate = (Button) findViewById(R.id.cargoOrderByAddDate);
-        cargoOrderByCost = (Button) findViewById(R.id.cargoOrderByCost);
-        cargoOrderByArriveDate = (Button) findViewById(R.id.cargoOrderByArriveDate);
+    @Click void cargoOrderByCost(){
+        if (orderMode == 3) {
+            orderMode = 2;
+        } else {
+            orderMode = 3;
+        }
+        loadCargos();
+    }
+
+    @Click void cargoOrderByArriveDate() {
+        if (orderMode == 5) {
+            orderMode = 4;
+        } else {
+            orderMode = 5;
+        }
+        loadCargos();
+    }
+
+    @ItemClick void listViewCargo(final Cargo cargo){
+        popupMenu = new PopupMenu(this, listViewCargo);
+        popupMenu.inflate(R.menu.cspopupmenu);
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.csItem1:
+                        Intent intent = new Intent(CargoSearch.this, UserInfo.class);
+                        intent.putExtra("userId", cargo.getUserId());
+                        startActivity(intent);
+                        return true;
+                    case R.id.csItem2:
+                        Intent intent1 = new Intent(CargoSearch.this, MapsActivity.class);
+                        startActivity(intent1);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        popupMenu.show();
+    }
+
+    @AfterViews void init() {
         orderMode = 0;
         intent = getIntent();
-        fromCity = intent.getStringExtra("fromCity");
-        if (fromCity != null) {
-            fromCity = fromCity.toUpperCase();
-        }
-        toCity = intent.getStringExtra("toCity");
-        if (toCity != null) {
-            toCity = toCity.toUpperCase();
-        }
-        bodyType = intent.getStringExtra("bodyType");
-        loadType = intent.getStringExtra("loadType");
-        payType = intent.getStringExtra("payType");
-        try {
-            fromWeight = Double.parseDouble(intent.getStringExtra("fromWeight"));
-        } catch (Exception e) {
-            fromWeight = null;
-        }
-        try {
-            toWeight = Double.parseDouble(intent.getStringExtra("toWeight"));
-        } catch (Exception e) {
-            toWeight = null;
-        }
-        try {
-            fromVolume = Double.parseDouble(intent.getStringExtra("fromVolume"));
-        } catch (Exception e) {
-            fromVolume = null;
-        }
-        try {
-            toVolume = Double.parseDouble(intent.getStringExtra("toVolume"));
-        } catch (Exception e) {
-            toVolume = null;
-        }
-        date = intent.getStringExtra("date");
+
+        fromCity = fromCity.toUpperCase();
+        toCity = toCity.toUpperCase();
+
         loadCargos();
-
-        cargoOrderByAddDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (orderMode == 0) {
-                    orderMode = 1;
-                } else {
-                    orderMode = 0;
-                }
-                loadCargos();
-            }
-        });
-
-        cargoOrderByCost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (orderMode == 3) {
-                    orderMode = 2;
-                } else {
-                    orderMode = 3;
-                }
-                loadCargos();
-            }
-        });
-
-        cargoOrderByArriveDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (orderMode == 5) {
-                    orderMode = 4;
-                } else {
-                    orderMode = 5;
-                }
-                loadCargos();
-            }
-        });
-
-        listViewCargo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                PopupMenu popupMenu = new PopupMenu(CargoSearch.this, view);
-                popupMenu.inflate(R.menu.cspopupmenu);
-
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-
-                            case R.id.csItem1:
-                                Intent intent = new Intent(CargoSearch.this, UserInfo.class);
-                                intent.putExtra("userId", ((Cargo) cargos.get(position)).getUserId());
-                                startActivity(intent);
-                                return true;
-                            case R.id.csItem2:
-                                Intent intent1 = new Intent(CargoSearch.this, MapsActivity.class);
-                                startActivity(intent1);
-                                return true;
-                            default:
-                                return false;
-                        }
-                    }
-                });
-
-                popupMenu.show();
-            }
-        });
     }
 
     private void loadCargos() {
