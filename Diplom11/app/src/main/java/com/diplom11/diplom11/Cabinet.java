@@ -21,8 +21,7 @@ import com.parse.ParseUser;
 
 public class Cabinet extends ActionBarActivity {
     private TextView cabId;
-    private EditText cabEmail;
-    private EditText cabFirstName;
+    private EditText cabEmail, cabFirstName;
     private EditText cabMidName;
     private EditText cabLastName;
     private Spinner cabOrgType;

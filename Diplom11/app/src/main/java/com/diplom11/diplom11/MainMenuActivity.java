@@ -7,11 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 
@@ -98,7 +96,7 @@ public class MainMenuActivity extends ActionBarActivity {
         menuItem7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenuActivity.this, AutorizationActivity.class);
+                Intent intent = new Intent(MainMenuActivity.this, AuthorizationActivity.class);
                 startActivity(intent);
             }
         });
