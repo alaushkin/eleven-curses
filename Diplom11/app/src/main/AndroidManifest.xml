@@ -53,7 +53,7 @@
             android:label="Поиск грузов" >
         </activity>
         <activity
-            android:name=".MyCargos"
+            android:name=".MyCargos_"
             android:label="Мои грузы" >
         </activity>
         <activity
@@ -67,7 +67,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".CargoSearchParametrs"
+            android:name=".CargoSearchParameters_"
             android:label="Параметры поиска"
             android:screenOrientation="portrait" >
         </activity>

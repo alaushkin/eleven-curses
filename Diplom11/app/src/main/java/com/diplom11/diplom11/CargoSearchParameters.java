@@ -1,13 +1,7 @@
 package com.diplom11.diplom11;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,10 +18,10 @@ import java.util.ArrayList;
 
 
 @EActivity(R.layout.activity_cargo_search_parametrs)
-public class CargoSearchParametrs extends ActionBarActivity {
+public class CargoSearchParameters extends ActionBarActivity {
     @ViewById EditText cspFromCity, cspToCity;
     @ViewById Spinner cspBodyType, cspLoadType, cspPayType;
-    private EditText cspFromWeight, cspToWeight, cspFromVolume, cspToVolume, cspDate;
+    @ViewById EditText cspFromWeight, cspToWeight, cspFromVolume, cspToVolume, cspDate;
 
     @AfterViews void init() {
 
@@ -59,8 +53,8 @@ public class CargoSearchParametrs extends ActionBarActivity {
     @Click  void cspSubmit() {
         if (!validate()) return;
 
-        CargoSearch_.intent(CargoSearchParametrs.this)
-            .fromCity   ( cspFromCity.getText().toString().trim()   )
+        CargoSearch_.intent(CargoSearchParameters.this)
+            .fromCity(cspFromCity.getText().toString().trim())
             .toCity     ( cspToCity.getText().toString().trim()     )
             .bodyType   ( ((DictPair) cspBodyType.getSelectedItem()).getKey().trim() )
             .loadType   ( ((DictPair) cspLoadType.getSelectedItem()).getKey().trim() )

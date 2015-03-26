@@ -17,67 +17,29 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+@EActivity(R.layout.activity_my_cargos)
 public class MyCargos extends ActionBarActivity {
-    private Button addCargo;
-    private Button delCargo;
-    private ListView myCargos;
+    @ViewById ListView myCargos;
     private ArrayList<Cargo> cargos = new ArrayList<>();
 
     private int selectedCargo = -1;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_cargos);
-        init();
+    @Click void addCargo() {
+        Intent intent = new Intent(MyCargos.this, AddCargo.class);
+        startActivity(intent);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my_cargos, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void init(){
-        addCargo = (Button) findViewById(R.id.addCargo);
-        delCargo = (Button) findViewById(R.id.delCargo);
-        myCargos = (ListView) findViewById(R.id.myCargos);
-
-        addCargo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MyCargos.this, AddCargo.class);
-                startActivity(intent);
-            }
-        });
-        delCargo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteSelectedCargo();
-            }
-        });
-
+    @AfterViews void init(){
         ParseQuery parseQuery = new ParseQuery("Cargo");
         parseQuery.whereEqualTo("state",1);
         parseQuery.whereEqualTo("user", ParseUser.getCurrentUser().getObjectId());
@@ -93,30 +55,22 @@ public class MyCargos extends ActionBarActivity {
         ArrayAdapter<Object> arrayAdapter = new ArrayAdapter(this, R.layout.cargi_choise, cargos.toArray());
         myCargos.setAdapter(arrayAdapter);
         myCargos.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        myCargos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedCargo = position;
-            }
-        });
     }
 
-    private void deleteSelectedCargo(){
-        if(selectedCargo > -1) {
-            ParseQuery parseQuery = new ParseQuery("Cargo");
-            parseQuery.whereEqualTo("objectId",((Cargo) myCargos.getItemAtPosition(selectedCargo)).getId());
-            try {
-                ParseObject object = (ParseObject) parseQuery.find().get(0);
-                object.delete();
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            //ob.re
-            //(Cargo) myCargos.getSelectedItem();
+    @ItemClick void myCargos(int position) { selectedCargo = position; }
+
+    @Click void delCargo(){
+        if(selectedCargo <= -1) return;
+        ParseQuery parseQuery = new ParseQuery("Cargo");
+        parseQuery.whereEqualTo("objectId",((Cargo) myCargos.getItemAtPosition(selectedCargo)).getId());
+        try {
+            ParseObject object = (ParseObject) parseQuery.find().get(0);
+            object.delete();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -15,10 +15,7 @@ import org.androidannotations.annotations.EActivity;
 @EActivity(R.layout.activity_main_menu)
 public class MainMenuActivity extends ActionBarActivity {
 
-    @Click void menuItem1() {
-        Intent intent = new Intent(MainMenuActivity.this, CargoSearchParametrs.class);
-        startActivity(intent);
-    }
+    @Click void menuItem1() { CargoSearchParameters_.intent(this).start(); }
 
     @Click void menuItem4() {
         Intent intent = new Intent(MainMenuActivity.this, MyCargos.class);
