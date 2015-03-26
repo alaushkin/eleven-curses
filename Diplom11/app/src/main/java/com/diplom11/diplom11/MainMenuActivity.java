@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -16,11 +17,7 @@ import org.androidannotations.annotations.EActivity;
 public class MainMenuActivity extends ActionBarActivity {
 
     @Click void menuItem1() { CargoSearchParameters_.intent(this).start(); }
-
-    @Click void menuItem4() {
-        Intent intent = new Intent(MainMenuActivity.this, MyCargos.class);
-        startActivity(intent);
-    }
+    @Click void menuItem4() { MyCargos_.intent(this).start(); }
 
     @Click void menuItem5(){
         Intent intent = new Intent(MainMenuActivity.this, UsersSearchParams.class);
@@ -30,8 +27,8 @@ public class MainMenuActivity extends ActionBarActivity {
     @Click void menuItem6() { CabinetActivity_.intent(this).start(); }
 
     @Click void menuItem7() {
-        Intent intent = new Intent(MainMenuActivity.this, AuthorizationActivity.class);
-        startActivity(intent);
+        ParseUser.getCurrentUser().logOut();
+        AuthorizationActivity_.intent(this).start();
     }
     @AfterViews void init(){
         try {

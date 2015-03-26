@@ -57,7 +57,7 @@
             android:label="Мои грузы" >
         </activity>
         <activity
-            android:name=".AddCargo"
+            android:name=".AddCargo_"
             android:label="Добавить груз"
             android:screenOrientation="portrait" >
         </activity>

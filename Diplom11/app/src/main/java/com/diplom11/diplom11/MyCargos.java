@@ -34,10 +34,7 @@ public class MyCargos extends ActionBarActivity {
 
     private int selectedCargo = -1;
 
-    @Click void addCargo() {
-        Intent intent = new Intent(MyCargos.this, AddCargo.class);
-        startActivity(intent);
-    }
+    @Click void addCargo() { AddCargo_.intent(this).start(); }
 
     @AfterViews void init(){
         ParseQuery parseQuery = new ParseQuery("Cargo");
