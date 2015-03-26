@@ -2,11 +2,6 @@ package com.diplom11.diplom11;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 import com.parse.ParseException;
@@ -15,7 +10,6 @@ import com.parse.ParseQuery;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.ViewById;
 
 
 @EActivity(R.layout.activity_main_menu)
@@ -36,10 +30,7 @@ public class MainMenuActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    @Click void menuItem6() {
-        Intent intent = new Intent(MainMenuActivity.this, Cabinet.class);
-        startActivity(intent);
-    }
+    @Click void menuItem6() { CabinetActivity_.intent(this).start(); }
 
     @Click void menuItem7() {
         Intent intent = new Intent(MainMenuActivity.this, AuthorizationActivity.class);

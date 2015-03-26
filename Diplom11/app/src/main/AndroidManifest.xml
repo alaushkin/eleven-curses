@@ -62,7 +62,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".Cabinet"
+            android:name=".CabinetActivity_"
             android:label="Личный кабинет"
             android:screenOrientation="portrait" >
         </activity>
