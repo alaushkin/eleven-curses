@@ -1,24 +1,16 @@
 package com.diplom11.diplom11;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.DragEvent;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.ScrollView;
 
 import com.diplom11.diplom11.CargoSearchTools.Cargo;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParsePush;
 import com.parse.ParseQuery;
 
 import org.androidannotations.annotations.AfterViews;
@@ -28,8 +20,6 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +74,7 @@ public class CargoSearch extends ActionBarActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.csItem1:
-                        Intent intent = new Intent(CargoSearch.this, UserInfo.class);
-                        intent.putExtra("userId", cargo.getUserId());
+                        UserInfoActivity_.intent(CargoSearch.this).userId( cargo.getUserId()).start();
                         startActivity(intent);
                         return true;
                     case R.id.csItem2:

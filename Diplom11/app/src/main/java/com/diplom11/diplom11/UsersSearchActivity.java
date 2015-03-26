@@ -2,16 +2,9 @@ package com.diplom11.diplom11;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 
-import com.diplom11.diplom11.CargoSearchTools.Cargo;
 import com.diplom11.diplom11.UserTools.User;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -28,7 +21,7 @@ import java.util.List;
 
 
 @EActivity(R.layout.activity_users_search)
-public class UsersSearch extends ActionBarActivity {
+public class UsersSearchActivity extends ActionBarActivity {
     @ViewById ListView usList;
     @Extra String lastName, firstName, midName, email, orgType;
 
@@ -51,11 +44,7 @@ public class UsersSearch extends ActionBarActivity {
     @ItemClick void usList(User user) {
         if(userList.size() <= 0) return;
 
-        // TODO: fix call of activity with AA
-        Intent intent = new Intent(UsersSearch.this, UserInfo.class);
-        intent.putExtra("userId", user.getUserId());
-        startActivity(intent);
-
+        UserInfoActivity_.intent(this).userId( user.getUserId() ).start();
     }
 
     private void loadUsers() {

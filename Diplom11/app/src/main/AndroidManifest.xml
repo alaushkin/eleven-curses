@@ -72,15 +72,15 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".UserInfo"
+            android:name=".UserInfoActivity_"
             android:label="@string/title_activity_user_info" >
         </activity>
         <activity
-            android:name=".UsersSearchParams"
+            android:name=".UsersSearchParamsActivity_"
             android:label="@string/title_activity_users_search_params" >
         </activity>
         <activity
-            android:name=".UsersSearch_"
+            android:name=".UsersSearchActivity_"
             android:label="@string/title_activity_users_search" >
         </activity>
         <activity

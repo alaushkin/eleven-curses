@@ -16,30 +16,26 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class UserInfo extends ActionBarActivity {
-    private TextView usInfo;
-    private RatingBar usRatingBar;
-    private Button usVote;
+@EActivity(R.layout.activity_user_info)
+public class UserInfoActivity extends ActionBarActivity {
+    @ViewById TextView usInfo;
+    @ViewById RatingBar usRatingBar;
+    @ViewById Button usVote;
     //Assessment
     private User user;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info);
-        init();
-    }
+    @Extra  String  userId;
 
-    private void init(){
-        usInfo = (TextView) findViewById(R.id.usInfo);
-        usRatingBar = (RatingBar) findViewById(R.id.usRatingBar);
-        usVote = (Button) findViewById(R.id.usVote);
-
-        final String userId = getIntent().getStringExtra("userId");
+    @AfterViews void init(){
         ParseQuery query = new ParseQuery("UserData");
         query.whereEqualTo("userId", userId);
         try {
@@ -64,41 +60,36 @@ public class UserInfo extends ActionBarActivity {
             return;
         }
 
-        usVote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseObject parseObject = new ParseObject("Assessment");
-                parseObject.put("User1", ParseUser.getCurrentUser().getObjectId());
-                parseObject.put("User2", user.getUserId());
-                parseObject.put("value", usRatingBar.getRating());
-                ParseACL acl = new ParseACL();
-                acl.setPublicReadAccess(true);
-                acl.setPublicWriteAccess(true);
-                try {
-                    parseObject.save();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                ParseQuery parseQuery = new ParseQuery("UserData");
-                parseQuery.whereEqualTo("userId", user.getUserId());
-                try {
-                    List list = parseQuery.find();
-                    if(list.size() > 0){
-                        ParseObject usr = (ParseObject)list.get(0);
-                        double sumReit = usr.getDouble("sumReit");
-                        int count = usr.getInt("voteCount");
-                        sumReit += usRatingBar.getRating()*2;
-                        count++;
-                        usr.put("sumReit", sumReit);
-                        usr.put("voteCount", count);
-                        usr.save();
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                startActivity(getIntent());
+    }
+
+    @Click void usVote() {
+        ParseObject parseObject = new ParseObject("Assessment");
+        parseObject.put("User1", ParseUser.getCurrentUser().getObjectId());
+        parseObject.put("User2", user.getUserId());
+        parseObject.put("value", usRatingBar.getRating());
+        try {
+            parseObject.save();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        ParseQuery parseQuery = new ParseQuery("UserData");
+        parseQuery.whereEqualTo("userId", user.getUserId());
+        try {
+            List list = parseQuery.find();
+            if(list.size() > 0){
+                ParseObject usr = (ParseObject)list.get(0);
+                double sumReit = usr.getDouble("sumReit");
+                int count = usr.getInt("voteCount");
+                sumReit += usRatingBar.getRating()*2;
+                count++;
+                usr.put("sumReit", sumReit);
+                usr.put("voteCount", count);
+                usr.save();
             }
-        });
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        startActivity(getIntent());
     }
 
     public void getRating(){

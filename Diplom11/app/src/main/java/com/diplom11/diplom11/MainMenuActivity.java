@@ -1,6 +1,5 @@
 package com.diplom11.diplom11;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
@@ -18,11 +17,7 @@ public class MainMenuActivity extends ActionBarActivity {
 
     @Click void menuItem1() { CargoSearchParameters_.intent(this).start(); }
     @Click void menuItem4() { MyCargos_.intent(this).start(); }
-
-    @Click void menuItem5(){
-        Intent intent = new Intent(MainMenuActivity.this, UsersSearchParams.class);
-        startActivity(intent);
-    }
+    @Click void menuItem5() { UsersSearchParamsActivity_.intent(this).start(); }
 
     @Click void menuItem6() { CabinetActivity_.intent(this).start(); }
 
