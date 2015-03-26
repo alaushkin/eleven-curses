@@ -15,64 +15,21 @@ import android.widget.TextView;
 import com.diplom11.diplom11.CargoSearchTools.DictPair;
 import com.diplom11.diplom11.CargoSearchTools.Dictionary;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
 
+@EActivity(R.layout.activity_cargo_search_parametrs)
 public class CargoSearchParametrs extends ActionBarActivity {
-    private EditText cspFromCity;
-    private EditText cspToCity;
-    private Spinner cspBodyType;
-    private Spinner cspLoadType;
-    private Spinner cspPayType;
-    private EditText cspFromWeight;
-    private EditText cspToWeight;
-    private EditText cspFromVolume;
-    private EditText cspToVolume;
-    private EditText cspDate;
-    private Button cspSubmit;
+    @ViewById EditText cspFromCity, cspToCity;
+    @ViewById Spinner cspBodyType, cspLoadType, cspPayType;
+    private EditText cspFromWeight, cspToWeight, cspFromVolume, cspToVolume, cspDate;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cargo_search_parametrs);
-        init();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_cargo_search_parametrs, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void init() {
-        cspFromCity = (EditText) findViewById(R.id.cspFromCity);
-        cspToCity = (EditText) findViewById(R.id.cspToCity);
-        cspBodyType = (Spinner) findViewById(R.id.cspBodyType);
-        cspLoadType = (Spinner) findViewById(R.id.cspLoadType);
-        cspPayType = (Spinner) findViewById(R.id.cspPayType);
-        cspFromWeight = (EditText) findViewById(R.id.cspFromWeight);
-        cspToWeight = (EditText) findViewById(R.id.cspToWeight);
-        cspFromVolume = (EditText) findViewById(R.id.cspFromVolume);
-        cspToVolume = (EditText) findViewById(R.id.cspToVolume);
-        cspDate = (EditText) findViewById(R.id.cspDate);
-        cspSubmit = (Button) findViewById(R.id.cspSubmit);
+    @AfterViews void init() {
 
         ArrayAdapter<Object> adapter;
 
@@ -97,25 +54,23 @@ public class CargoSearchParametrs extends ActionBarActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cspPayType.setAdapter(adapter);
 
-        cspSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!validate()) return;
+    }
 
-                CargoSearch_.intent(CargoSearchParametrs.this)
-                        .fromCity   ( cspFromCity.getText().toString().trim()   )
-                        .toCity     ( cspToCity.getText().toString().trim()     )
-                        .bodyType   ( ((DictPair) cspBodyType.getSelectedItem()).getKey().trim() )
-                        .loadType   ( ((DictPair) cspLoadType.getSelectedItem()).getKey().trim() )
-                        .payType    ( ((DictPair) cspPayType.getSelectedItem()).getKey().trim() )
-                        .date       ( cspDate.getText().toString().trim())
-                        .fromWeight ( getDouble(cspFromWeight ) )
-                        .toWeight   ( getDouble(cspToWeight) )
-                        .fromVolume ( getDouble(cspFromVolume) )
-                        .toVolume   ( getDouble(cspToVolume) )
-                        .start();
-            }
-        });
+    @Click  void cspSubmit() {
+        if (!validate()) return;
+
+        CargoSearch_.intent(CargoSearchParametrs.this)
+            .fromCity   ( cspFromCity.getText().toString().trim()   )
+            .toCity     ( cspToCity.getText().toString().trim()     )
+            .bodyType   ( ((DictPair) cspBodyType.getSelectedItem()).getKey().trim() )
+            .loadType   ( ((DictPair) cspLoadType.getSelectedItem()).getKey().trim() )
+            .payType    ( ((DictPair) cspPayType.getSelectedItem()).getKey().trim() )
+            .date       ( cspDate.getText().toString().trim())
+            .fromWeight ( getDouble(cspFromWeight ) )
+            .toWeight   ( getDouble(cspToWeight) )
+            .fromVolume ( getDouble(cspFromVolume) )
+            .toVolume   ( getDouble(cspToVolume) )
+            .start();
     }
 
     private boolean validate() {
