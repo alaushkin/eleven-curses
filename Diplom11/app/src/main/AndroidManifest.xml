@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".MainMenuActivity_"
             android:label="@string/app_name" >
         </activity>
         <activity

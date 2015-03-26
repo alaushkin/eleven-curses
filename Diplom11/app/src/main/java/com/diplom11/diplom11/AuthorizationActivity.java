@@ -39,8 +39,7 @@ public class AuthorizationActivity extends ActionBarActivity {
         ed.putString("password", password.getText().toString());
         ed.commit();
 
-        Intent intent = new Intent(AuthorizationActivity.this, MainMenuActivity.class);
-        startActivity(intent);
+        MainMenuActivity_.intent(this).start();
     }
 
     private boolean authentication(){
