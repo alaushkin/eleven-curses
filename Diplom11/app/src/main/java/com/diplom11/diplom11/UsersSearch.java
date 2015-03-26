@@ -17,51 +17,28 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+@EActivity(R.layout.activity_users_search)
 public class UsersSearch extends ActionBarActivity {
-    private ListView usList;
-    private ArrayList userList;
-    private Intent intent;
+    @ViewById ListView usList;
+    @Extra String lastName, firstName, midName, email, orgType;
 
-    private String lastName;
-    private String firstName;
-    private String midName;
-    private String email;
-    private String orgType;
+    private ArrayList<User> userList = new ArrayList();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_search);
-        init();
-    }
-
-    private void init() {
+    @AfterViews void init() {
         usList = (ListView) findViewById(R.id.usList);
-        intent = getIntent();
 
-        lastName = intent.getStringExtra("lastName");
-        firstName = intent.getStringExtra("firstName");
-        midName = intent.getStringExtra("midName");
-        email = intent.getStringExtra("email");
-        orgType = intent.getStringExtra("orgType");
-
-        userList = new ArrayList();
         loadUsers();
 
-        usList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                if(userList.size() > 0) {
-                    Intent intent = new Intent(UsersSearch.this, UserInfo.class);
-                    intent.putExtra("userId", ((User) userList.get(position)).getUserId());
-                    startActivity(intent);
-                }
-            }
-        });
         ArrayAdapter<Object> arrayAdapter;
         if(userList.size() > 0) {
             arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, userList.toArray());
@@ -69,6 +46,16 @@ public class UsersSearch extends ActionBarActivity {
             arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new String[]{"Поиск не дал результатов"});
         }
         usList.setAdapter(arrayAdapter);
+    }
+
+    @ItemClick void usList(User user) {
+        if(userList.size() <= 0) return;
+
+        // TODO: fix call of activity with AA
+        Intent intent = new Intent(UsersSearch.this, UserInfo.class);
+        intent.putExtra("userId", user.getUserId());
+        startActivity(intent);
+
     }
 
     private void loadUsers() {

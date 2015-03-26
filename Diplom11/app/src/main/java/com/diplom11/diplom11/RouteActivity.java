@@ -11,7 +11,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.FragmentById;
 
 @EActivity(R.layout.activity_route)
-public class Route extends FragmentActivity {
+public class RouteActivity extends FragmentActivity {
     @FragmentById SupportMapFragment mapFragment;
     GoogleMap map;
 

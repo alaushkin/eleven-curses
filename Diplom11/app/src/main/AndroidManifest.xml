@@ -80,11 +80,11 @@
             android:label="@string/title_activity_users_search_params" >
         </activity>
         <activity
-            android:name=".UsersSearch"
+            android:name=".UsersSearch_"
             android:label="@string/title_activity_users_search" >
         </activity>
         <activity
-            android:name=".Route"
+            android:name=".RouteActivity_"
             android:label="@string/title_activity_route" >
         </activity>
         <activity
