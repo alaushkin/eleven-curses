@@ -1,6 +1,5 @@
 package com.diplom11.diplom11;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;

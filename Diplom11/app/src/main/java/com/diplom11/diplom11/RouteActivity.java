@@ -1,39 +1,29 @@
 package com.diplom11.diplom11;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
-public class RouteActivity extends ActionBarActivity {
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.FragmentById;
+import org.androidannotations.annotations.AfterViews;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_route);
-    }
+@EActivity(R.layout.activity_route)
+public class RouteActivity extends FragmentActivity {
+    private GoogleMap map;
+    private LatLng start;
+    private LatLng end;
 
+    @FragmentById SupportMapFragment mapFragment;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_route, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    @AfterViews void init(){
+        start = new LatLng(0,10);
+        map = mapFragment.getMap();
+        if (map == null) {
+            finish();
+            return;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }

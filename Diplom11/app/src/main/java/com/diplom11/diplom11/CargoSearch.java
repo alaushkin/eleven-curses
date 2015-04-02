@@ -3,6 +3,7 @@ package com.diplom11.diplom11;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -75,11 +76,9 @@ public class CargoSearch extends ActionBarActivity {
                 switch (item.getItemId()) {
                     case R.id.csItem1:
                         UserInfoActivity_.intent(CargoSearch.this).userId( cargo.getUserId()).start();
-                        startActivity(intent);
                         return true;
                     case R.id.csItem2:
-                        Intent intent1 = new Intent(CargoSearch.this, MapsActivity.class);
-                        startActivity(intent1);
+                        RouteActivity_.intent(CargoSearch.this).start();
                         return true;
                     default:
                         return false;

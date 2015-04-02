@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diplom11.diplom11" >
-    <permission
-        android:name="com.vallabh.googlemapspractice.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="com.vallabh.googlemapspractice.permission.MAPS_RECEIVE" />
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true">
-    </uses-feature>
+
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
@@ -23,15 +17,17 @@
         android:theme="@style/Theme.AppCompat.Light" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyComUhEqr9BL4JjqJE05Lck4j1uABIU08Y">
+            android:value="AIzaSyCylKQhmGhCAXKOL2Sa6U_hPYzbm_83kmo" >
         </meta-data>
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="7095000">
+            android:value="@integer/google_play_services_version" >
         </meta-data>
+
         <activity
             android:name=".AuthorizationActivity_"
             android:label="Авторизация"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,7 +85,7 @@
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="@string/title_activity_maps" >
         </activity>
     </application>
 

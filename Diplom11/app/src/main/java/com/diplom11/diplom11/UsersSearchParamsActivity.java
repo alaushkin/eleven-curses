@@ -32,7 +32,7 @@ public class UsersSearchParamsActivity extends ActionBarActivity {
         UsersSearchActivity_.intent(this)
                 .lastName   (uspLastName.getText().toString().trim())
                 .firstName  (uspFirstName.getText().toString().trim())
-                .lastName   (uspMidName.getText().toString().trim())
+                .midName   (uspMidName.getText().toString().trim())
                 .email      (uspEmail.getText().toString().trim())
                 .orgType    ( (String)uspOrgType.getSelectedItem())
                 .start();
