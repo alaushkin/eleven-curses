@@ -1,13 +1,11 @@
 package com.diplom11.diplom11.CargoSearchTools;
 
-import com.parse.ParseException;
+import com.diplom11.diplom11.DictionaryTools.Dictionary;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.diplom11.diplom11.UserTools.User;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -36,31 +34,12 @@ public class Cargo {
         bodyType = (String) object.get("bodyType");
         loadType = (String) object.get("loadType");
         payType = (String) object.get("payType");
-        Number value;
-        value = (Number)object.get("xSize");
-        if(value != null) {
-            xSize = value.doubleValue();
-        }
-        value = (Number)object.get("ySize");
-        if(value != null) {
-            ySize = value.doubleValue();
-        }
-        value = (Number)object.get("zSize");
-        if(value != null) {
-            zSize = value.doubleValue();
-        }
-        value = (Number)object.get("weight");
-        if(value != null) {
-            weight = value.doubleValue();
-        }
-        value = (Number)object.get("volume");
-        if(value != null) {
-            volume = value.doubleValue();
-        }
-        value = (Number)object.get("cost");
-        if(value != null) {
-            cost = value.doubleValue();
-        }
+        xSize = object.getDouble("xSize");
+        ySize = object.getDouble("ySize");
+        zSize = object.getDouble("zSize");
+        weight = object.getDouble("weight");
+        volume = object.getDouble("volume");
+        cost = object.getDouble("cost");
         createdAt = object.getCreatedAt();
         arriveDate = (String) object.get("arriveDate");
         id = object.getObjectId();
@@ -78,8 +57,8 @@ public class Cargo {
     @Override
     public String toString(){
         StringBuffer result = new StringBuffer();
-        result.append("Город загрузки: " + loadingCity + "\n");
-        result.append("Город разгрузки: " + unloadingCity + "\n");
+        result.append("Город загрузки: " + Dictionary.getCityById(loadingCity) + "\n");
+        result.append("Город разгрузки: " + Dictionary.getCityById(unloadingCity) + "\n");
         result.append("Тип корпуса: " + Dictionary.getBodyTypeById(bodyType) + "\n");
         result.append("Тип загрузки: " + Dictionary.getLoadTypeById(loadType) + "\n");
         result.append("Ширина: " + xSize + "\n");

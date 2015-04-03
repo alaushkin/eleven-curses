@@ -1,22 +1,15 @@
 package com.diplom11.diplom11;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.diplom11.diplom11.CargoSearchTools.DictPair;
-import com.diplom11.diplom11.CargoSearchTools.Dictionary;
-import com.parse.ParseACL;
+import com.diplom11.diplom11.CityTools.City;
+import com.diplom11.diplom11.DictionaryTools.DictPair;
+import com.diplom11.diplom11.DictionaryTools.Dictionary;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -27,45 +20,57 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
 
 @EActivity(R.layout.activity_add_cargo)
 public class AddCargo extends ActionBarActivity {
-    @ViewById EditText addCargoLoadCity, addCargoUnLoadCity, addCargoXSize,
-            addCargoYSize, addCargoZSize, addCargoWeight,
-            addCargoVolume, addCargoCost, addCargoDate;
-    @ViewById Spinner addCargoBodyType, addCargoLoadType, addCargoPayType;
-    @ViewById TextView addCargoError;
+    @ViewById
+    EditText addCargoXSize, addCargoYSize, addCargoZSize,
+            addCargoWeight, addCargoVolume, addCargoCost, addCargoDate;
+    @ViewById
+    Spinner addCargoLoadCity, addCargoUnLoadCity;
+    @ViewById
+    Spinner addCargoBodyType, addCargoLoadType, addCargoPayType;
+    @ViewById
+    TextView addCargoError;
 
 
-    @AfterViews void init() {
+    @AfterViews
+    void init() {
         ArrayAdapter<Object> adapter;
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getBodyTypeArray());
+        adapter = new ArrayAdapter(this, R.layout.my_spinner, Dictionary.getBodyTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoBodyType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getLoadTypeArray());
+        adapter = new ArrayAdapter(this, R.layout.my_spinner, Dictionary.getLoadTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoLoadType.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Dictionary.getPayTypeArray());
+        adapter = new ArrayAdapter(this, R.layout.my_spinner, Dictionary.getPayTypeArray());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCargoPayType.setAdapter(adapter);
+
+        adapter = new ArrayAdapter(this, R.layout.my_spinner, Dictionary.getCityesArray());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        addCargoLoadCity.setAdapter(adapter);
+
+        adapter = new ArrayAdapter(this, R.layout.my_spinner, Dictionary.getCityesArray());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        addCargoUnLoadCity.setAdapter(adapter);
 
         addCargoError.setVisibility(View.INVISIBLE);
     }
 
-    @Click void addCargoButton() {
+    @Click
+    void addCargoButton() {
         if (!validate()) {
             addCargoError.setVisibility(View.VISIBLE);
             return;
         }
 
         ParseObject parseObject = new ParseObject("Cargo");
-        parseObject.put("loadingCity", addCargoLoadCity.getText().toString().toUpperCase());
-        parseObject.put("unloadingCity", addCargoUnLoadCity.getText().toString().toUpperCase());
+        parseObject.put("loadingCity", ((City) addCargoLoadCity.getSelectedItem()).getId());
+        parseObject.put("unloadingCity", ((City) addCargoUnLoadCity.getSelectedItem()).getId());
         parseObject.put("bodyType", ((DictPair) addCargoBodyType.getSelectedItem()).getKey());
         parseObject.put("loadType", ((DictPair) addCargoLoadType.getSelectedItem()).getKey());
         parseObject.put("payType", ((DictPair) addCargoPayType.getSelectedItem()).getKey());
@@ -94,9 +99,7 @@ public class AddCargo extends ActionBarActivity {
     }
 
     private boolean validate() {
-        return !(addCargoLoadCity.getText().toString().isEmpty()
-                || addCargoUnLoadCity.getText().toString().isEmpty()
-                || addCargoWeight.getText().toString().isEmpty()
+        return !(addCargoWeight.getText().toString().isEmpty()
                 || addCargoVolume.getText().toString().isEmpty());
     }
 }

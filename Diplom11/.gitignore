@@ -3,11 +3,9 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
 
 
 ./app/src/main/res/values/strings_map.xml
-./build
 
 app/app.iml
 java_pid*
@@ -69,11 +67,8 @@ com_crashlytics_export_strings.xml
 /local.properties
 /.idea/workspace.xml
 .DS_Store
-/build
-*/build
 
 # Built application files
-*.apk
 *.ap_
 
 # Files for the Dalvik VM

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-68b67b7fba1d5c7004f27e30d329ad43bc5d830b.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-64c9c7b7dfba7d4172b0529d58415f7484d610ac.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-3a880b690c9de3be391c3cea3d6d9872006be231.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-ffc39122f1831b0c920a1a4c626f4bdd609539a7.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-6be9c5de1aaed2754fd3638d014172135e7d52d7.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-e9dedb6fe577b31029d7eb1821d11aed3c57e90a.jar" />
+    </item>
+    <item
+        jar="C:\androind_sdk\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-ea2b34419b2f6e7219ca58c7f37689c29d7d22ab.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-ebe1dbe09c080ea4d57ca6cd0b42ea0d3e3d9d9f.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\libs\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-9f4940a10a33ec30780ab048e2189712b5c20ee9.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\libs\bolts-android-1.1.4-javadoc.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f5dd6492c539679411fa30818320b737c410158f">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-javadoc-2556a14dca7c1e6f92d8f3cfee314e81eb2f5bb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Mak\.gradle\caches\modules-2\files-2.1\org.androidannotations\androidannotations-api\3.2\89b33bb1e996eb2c4089f79d1b8651c71fe8e2d1\androidannotations-api-3.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="89b33bb1e996eb2c4089f79d1b8651c71fe8e2d1">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\androidannotations-api-3.2-1d6002c1f9e059bb9342a83037ace73e064ea672.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-95236795b3a218ea0458dcf7fb05fbd8ba9a0817.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-5924689f8bfd76e16c10111d92bb83a4aa1642b7.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-122ebe0fa99a5d8c69d08dd3d3056e9c5f20f609.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-df5f36dfb746068744e209cc83abe698903a1937.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-c284c675403e7d936fb7c809479f824c88036d76.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\libs\ParseCrashReporting-1.8.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6abf1314a88755b8fa034b2ae99956fc02170ed1">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.8.3-6650b8449cea80b4d6443d2836288ff878421ef9.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-ad96968f81fe56725d100c83dad519f0c4bff864.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-4e5ff7d686a584eb382ba3b744ad24810aa04a11.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-0a903b19b0d775a64f02349e1029ea417af8ff33.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-3cb5ba5896f5c11ed47ddae0e9efd4aa3388900b.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-0a3cc5254084d8a2c6d2a6e10bbce7ccf41668ed.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-5fb80ad30c46e888d26256d3f2b013863d7fa3ac.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-e149e0833f043232bd0a14a2e5f69f976976de20.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-f2178fed982cc2141efceec3bc80724e211e9f76.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-4e98684a938749a4da2a3c8ec816d1c89ecd0403.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\classes-5f8fb413cf5ebc9c0b2badc9cb6ad48b13a25038.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\libs\google_play_services\libproject\google-play-services_lib\libs\google-play-services.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="38c2f8e192dc24ddbf6cae2784f3d4267af66a3e">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\google-play-services-5a5cd3e82edfca8fbb5b1fc4df92dabe91e9d0ca.jar" />
+    </item>
+    <item
+        jar="C:\prj\newDiplom\eleven-curses\Diplom11\app\libs\Parse-1.8.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
+        <dex dex="C:\prj\newDiplom\eleven-curses\Diplom11\app\build\intermediates\pre-dexed\debug\Parse-1.8.3-8022b07b64c16430d1db6e74eb0ccaa60e91db05.jar" />
+    </item>
+
+</items>

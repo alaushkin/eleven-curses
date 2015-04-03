@@ -54,8 +54,7 @@
         </activity>
         <activity
             android:name=".AddCargo_"
-            android:label="Добавить груз"
-            android:screenOrientation="portrait" >
+            android:label="Добавить груз" >
         </activity>
         <activity
             android:name=".CabinetActivity_"
@@ -64,28 +63,27 @@
         </activity>
         <activity
             android:name=".CargoSearchParameters_"
-            android:label="Параметры поиска"
-            android:screenOrientation="portrait" >
+            android:label="Параметры поиска">
         </activity>
         <activity
             android:name=".UserInfoActivity_"
-            android:label="@string/title_activity_user_info" >
+            android:label="Информация о пользователе" >
         </activity>
         <activity
             android:name=".UsersSearchParamsActivity_"
-            android:label="@string/title_activity_users_search_params" >
+            android:label="Параметры поиска" >
         </activity>
         <activity
             android:name=".UsersSearchActivity_"
-            android:label="@string/title_activity_users_search" >
+            android:label="Поиск пользователей" >
         </activity>
         <activity
             android:name=".RouteActivity_"
-            android:label="@string/title_activity_route" >
+            android:label="Маршрут" >
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
+            android:label="Маршрут" >
         </activity>
     </application>
 

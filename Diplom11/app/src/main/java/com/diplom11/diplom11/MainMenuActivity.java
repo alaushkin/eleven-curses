@@ -3,7 +3,7 @@ package com.diplom11.diplom11;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 
-import com.diplom11.diplom11.CargoSearchTools.Dictionary;
+import com.diplom11.diplom11.DictionaryTools.Dictionary;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -38,6 +38,8 @@ public class MainMenuActivity extends ActionBarActivity {
             Dictionary.setLoadType(parseQuery.find());
             parseQuery = new ParseQuery("PayType");
             Dictionary.setPayType(parseQuery.find());
+            parseQuery = new ParseQuery("Cityes");
+            Dictionary.setCityes(parseQuery.find());
         } catch (ParseException e) {
             e.printStackTrace();
         }

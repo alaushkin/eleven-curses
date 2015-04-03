@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 
 import com.diplom11.diplom11.CargoSearchTools.Cargo;
+import com.diplom11.diplom11.DictionaryTools.Dictionary;
+import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -78,7 +80,7 @@ public class CargoSearch extends ActionBarActivity {
                         UserInfoActivity_.intent(CargoSearch.this).userId( cargo.getUserId()).start();
                         return true;
                     case R.id.csItem2:
-                        RouteActivity_.intent(CargoSearch.this).start();
+                        RouteActivity_.intent(CargoSearch.this).rStart(Dictionary.getCityById(fromCity).getCoordinate()).rEnd(Dictionary.getCityById(toCity).getCoordinate()).start();
                         return true;
                     default:
                         return false;
@@ -92,10 +94,6 @@ public class CargoSearch extends ActionBarActivity {
     @AfterViews void init() {
         orderMode = 0;
         intent = getIntent();
-
-        fromCity = fromCity.toUpperCase();
-        toCity = toCity.toUpperCase();
-
         loadCargos();
     }
 
