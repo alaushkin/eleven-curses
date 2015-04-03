@@ -28,11 +28,15 @@ import java.util.List;
 
 @EActivity(R.layout.activity_cargo_search)
 public class CargoSearch extends ActionBarActivity {
-    @ViewById ListView listViewCargo;
-    @ViewById Button cargoOrderByAddDate, cargoOrderByCost, cargoOrderByArriveDate;
+    @ViewById
+    ListView listViewCargo;
+    @ViewById
+    Button cargoOrderByAddDate, cargoOrderByCost, cargoOrderByArriveDate;
 
-    @Extra String date, fromCity, toCity, bodyType, loadType, payType;
-    @Extra Double fromWeight, toWeight, fromVolume, toVolume;
+    @Extra
+    String date, fromCity, toCity, bodyType, loadType, payType;
+    @Extra
+    Double fromWeight, toWeight, fromVolume, toVolume;
 
     private ArrayList<Cargo> cargos = new ArrayList<>();
     private int orderMode;
@@ -40,7 +44,8 @@ public class CargoSearch extends ActionBarActivity {
     public PopupMenu popupMenu;
 
 
-    @Click void cargoOrderByAddDate(){
+    @Click
+    void cargoOrderByAddDate() {
         if (orderMode == 0) {
             orderMode = 1;
         } else {
@@ -49,7 +54,8 @@ public class CargoSearch extends ActionBarActivity {
         loadCargos();
     }
 
-    @Click void cargoOrderByCost(){
+    @Click
+    void cargoOrderByCost() {
         if (orderMode == 3) {
             orderMode = 2;
         } else {
@@ -58,7 +64,8 @@ public class CargoSearch extends ActionBarActivity {
         loadCargos();
     }
 
-    @Click void cargoOrderByArriveDate() {
+    @Click
+    void cargoOrderByArriveDate() {
         if (orderMode == 5) {
             orderMode = 4;
         } else {
@@ -67,7 +74,8 @@ public class CargoSearch extends ActionBarActivity {
         loadCargos();
     }
 
-    @ItemClick void listViewCargo(final Cargo cargo){
+    @ItemClick
+    void listViewCargo(final Cargo cargo) {
         popupMenu = new PopupMenu(this, listViewCargo);
         popupMenu.inflate(R.menu.cspopupmenu);
 
@@ -77,10 +85,10 @@ public class CargoSearch extends ActionBarActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.csItem1:
-                        UserInfoActivity_.intent(CargoSearch.this).userId( cargo.getUserId()).start();
+                        UserInfoActivity_.intent(CargoSearch.this).userId(cargo.getUserId()).start();
                         return true;
                     case R.id.csItem2:
-                        RouteActivity_.intent(CargoSearch.this).rStart(Dictionary.getCityById(fromCity).getCoordinate()).rEnd(Dictionary.getCityById(toCity).getCoordinate()).start();
+                        RouteActivity_.intent(CargoSearch.this).startCity(cargo.getLoadingCity()).endCity(cargo.getUnloadingCity()).start();
                         return true;
                     default:
                         return false;
@@ -91,7 +99,8 @@ public class CargoSearch extends ActionBarActivity {
         popupMenu.show();
     }
 
-    @AfterViews void init() {
+    @AfterViews
+    void init() {
         orderMode = 0;
         intent = getIntent();
         loadCargos();

@@ -2,6 +2,7 @@ package com.diplom11.diplom11;
 
 import android.support.v4.app.FragmentActivity;
 
+import com.diplom11.diplom11.DictionaryTools.Dictionary;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -19,26 +20,29 @@ public class RouteActivity extends FragmentActivity {
     private GoogleMap map;
     private MarkerOptions markerEnd;
     private MarkerOptions markerStart;
+    private LatLng rStart, rEnd;
 
     @FragmentById SupportMapFragment mapFragment;
 
-    @Extra LatLng rStart, rEnd;
+    @Extra String startCity, endCity;
 
     @AfterViews void init(){
-//        rStart = new LatLng(0,10);
         map = mapFragment.getMap();
         if (map == null) {
             finish();
             return;
         }
-//        markerEnd = new MarkerOptions();
-//        markerEnd.position(rEnd);
-//        map.addMarker(markerEnd);
-////map.
-//        markerStart = new MarkerOptions();
-//        markerStart.position(rStart);
-//        map.addMarker(markerStart);
+        rStart = Dictionary.getCityById(startCity).getCoordinate();
+        rEnd = Dictionary.getCityById(endCity).getCoordinate();
 
-        //map.animateCamera(CameraUpdateFactory.newLatLng(rEnd));
+        markerEnd = new MarkerOptions();
+        markerEnd.position(rEnd);
+        map.addMarker(markerEnd);
+////map.
+        markerStart = new MarkerOptions();
+        markerStart.position(rStart);
+        map.addMarker(markerStart);
+
+        map.animateCamera(CameraUpdateFactory.newLatLng(rEnd));
     }
 }

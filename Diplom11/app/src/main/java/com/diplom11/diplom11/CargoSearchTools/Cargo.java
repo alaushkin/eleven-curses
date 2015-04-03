@@ -82,4 +82,12 @@ public class Cargo {
     public String getUserId(){
         return owner.getUserId();
     }
+
+    public String getLoadingCity(){
+        return loadingCity;
+    }
+
+    public String getUnloadingCity(){
+        return unloadingCity;
+    }
 }

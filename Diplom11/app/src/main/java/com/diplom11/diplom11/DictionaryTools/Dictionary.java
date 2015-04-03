@@ -48,6 +48,7 @@ public class Dictionary {
     }
 
     static public void setCityes(List list){
+        cityes = new ArrayList<City>();
         for(Object object : list){
             ParseObject parseObject = (ParseObject) object;
             cityes.add(new City(parseObject));
