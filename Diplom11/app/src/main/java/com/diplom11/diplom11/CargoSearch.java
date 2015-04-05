@@ -159,7 +159,12 @@ public class CargoSearch extends ActionBarActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        ArrayAdapter<Object> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, cargos.toArray());
+        ArrayAdapter<Object> arrayAdapter;
+        if (cargos.size() > 0) {
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, cargos.toArray());
+        } else {
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new String[]{"Поиск по заданным параметрам не дал результатов"});
+        }
         listViewCargo.setAdapter(arrayAdapter);
     }
 }

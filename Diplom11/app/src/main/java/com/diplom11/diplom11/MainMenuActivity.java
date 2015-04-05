@@ -39,6 +39,7 @@ public class MainMenuActivity extends ActionBarActivity {
             parseQuery = new ParseQuery("PayType");
             Dictionary.setPayType(parseQuery.find());
             parseQuery = new ParseQuery("Cityes");
+            parseQuery.orderByAscending("name");
             Dictionary.setCityes(parseQuery.find());
         } catch (ParseException e) {
             e.printStackTrace();
