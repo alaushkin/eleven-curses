@@ -15,4 +15,6 @@
     <string name="title_activity_users_search">UsersSearch</string>
     <string name="title_activity_route">Route</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_my_cars">MyCars</string>
+    <string name="title_activity_add_car">AddCar</string>
 </resources>

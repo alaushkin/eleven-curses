@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".CargoSearchParameters_"
-            android:label="Параметры поиска">
+            android:label="Параметры поиска" >
         </activity>
         <activity
             android:name=".UserInfoActivity_"
@@ -80,11 +80,19 @@
         <activity
             android:name=".RouteActivity_"
             android:label="Маршрут"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".MapsActivity"
             android:label="Маршрут" >
+        </activity>
+        <activity
+            android:name=".MyCars_"
+            android:label="Мой автотранспорт" >
+        </activity>
+        <activity
+            android:name=".AddCar_"
+            android:label="Добавить машину" >
         </activity>
     </application>
 

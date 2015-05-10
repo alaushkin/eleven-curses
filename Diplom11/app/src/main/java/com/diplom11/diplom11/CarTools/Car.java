@@ -1,47 +1,38 @@
-package com.diplom11.diplom11.CargoSearchTools;
+package com.diplom11.diplom11.CarTools;
 
 import com.diplom11.diplom11.DictionaryTools.Dictionary;
+import com.diplom11.diplom11.UserTools.User;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.diplom11.diplom11.UserTools.User;
 
 import java.util.Date;
 
-
 /**
- * Created by Mak on 09.03.2015.
+ * Created by Mak on 10.05.2015.
  */
-public class Cargo {
+public class Car {
     private String loadingCity;
     private String unloadingCity;
     private String bodyType;
     private String loadType;
-    private double xSize;
-    private double ySize;
-    private double zSize;
     private double weight;
     private double volume;
-    private double cost;
-    private String payType;
     private Date createdAt;
     private String arriveDate;
+    private String otprDate;
     private String id;
     private User owner;
 
-    public Cargo(ParseObject object) {
+    public Car(ParseObject object) {
         loadingCity = (String) object.get("loadingCity");
         unloadingCity = (String) object.get("unloadingCity");
         bodyType = (String) object.get("bodyType");
         loadType = (String) object.get("loadType");
-        payType = (String) object.get("payType");
-        xSize = object.getDouble("xSize");
-        ySize = object.getDouble("ySize");
-        zSize = object.getDouble("zSize");
         weight = object.getDouble("weight");
         volume = object.getDouble("volume");
-        cost = object.getDouble("cost");
         createdAt = object.getCreatedAt();
         arriveDate = (String) object.get("arriveDate");
+        otprDate = (String) object.get("otprDate");
         id = object.getObjectId();
 
         ParseQuery parseQuery = new ParseQuery("UserData");
@@ -61,14 +52,10 @@ public class Cargo {
         result.append("Город разгрузки: " + Dictionary.getCityById(unloadingCity) + "\n");
         result.append("Тип корпуса: " + Dictionary.getBodyTypeById(bodyType) + "\n");
         result.append("Тип загрузки: " + Dictionary.getLoadTypeById(loadType) + "\n");
-        result.append("Ширина: " + xSize + "\n");
-        result.append("Высота: " + ySize + "\n");
-        result.append("Длина: " + zSize + "\n");
-        result.append("Вес: " + weight + "\n");
+        result.append("Тоннаж: " + weight + "\n");
         result.append("Объем: " + volume + "\n");
-        result.append("Цена за километр: " + cost + "\n");
-        result.append("Тип оплаты: " + Dictionary.getPayTypeById(payType) + "\n");
         result.append("Дата добавления заявки: " + new java.sql.Date(createdAt.getTime()) + "\n");
+        result.append("Дата отправки: " + otprDate + "\n");
         result.append("Дата прибытия: " + arriveDate + "\n");
         result.append("Рейтинг владельца: " + owner.getReiting() + "\n");
         result.append("ИД владельца: " + owner.getUserId() + "\n");
