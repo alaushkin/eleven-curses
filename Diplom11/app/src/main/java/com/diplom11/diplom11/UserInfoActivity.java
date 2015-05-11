@@ -20,12 +20,15 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @EActivity(R.layout.activity_user_info)
+@OptionsMenu(R.menu.menu_common)
 public class UserInfoActivity extends ActionBarActivity {
     @ViewById TextView usInfo;
     @ViewById RatingBar usRatingBar;
@@ -108,4 +111,10 @@ public class UserInfoActivity extends ActionBarActivity {
             e.printStackTrace();
         }
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

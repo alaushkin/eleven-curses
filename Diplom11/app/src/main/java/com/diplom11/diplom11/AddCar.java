@@ -20,11 +20,14 @@ import com.parse.ParseUser;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import java.math.BigDecimal;
 
 @EActivity(R.layout.activity_add_car)
+@OptionsMenu(R.menu.menu_common)
 public class AddCar extends ActionBarActivity {
     @ViewById EditText addCarWeight, addCarVolume, addCarArriveDate, addCarOtprDate;
     @ViewById Spinner addCarLoadCity, addCarUnLoadCity;
@@ -74,4 +77,10 @@ public class AddCar extends ActionBarActivity {
         }
         MyCars_.intent(this).start();
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

@@ -9,9 +9,12 @@ import android.widget.Spinner;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_users_search_params)
+@OptionsMenu(R.menu.menu_common)
 public class UsersSearchParamsActivity extends ActionBarActivity {
     @ViewById EditText uspUserId, uspLastName, uspFirstName, uspMidName, uspEmail;
     @ViewById Spinner uspOrgType;
@@ -37,4 +40,10 @@ public class UsersSearchParamsActivity extends ActionBarActivity {
                 .orgType    ( (String)uspOrgType.getSelectedItem())
                 .start();
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

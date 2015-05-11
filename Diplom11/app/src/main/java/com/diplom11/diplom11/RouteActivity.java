@@ -18,6 +18,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.FragmentById;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -35,6 +37,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 @EActivity(R.layout.activity_route)
+@OptionsMenu(R.menu.menu_common)
 public class RouteActivity extends FragmentActivity {
     private GoogleMap map;
     private LatLng rStart, rEnd;
@@ -98,4 +101,10 @@ public class RouteActivity extends FragmentActivity {
         }
         newPolyline = map.addPolyline(rectLine);
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

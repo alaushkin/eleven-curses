@@ -2,16 +2,16 @@ package com.diplom11.diplom11;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 
+import com.diplom11.diplom11.CarTools.Car;
 import com.diplom11.diplom11.CargoSearchTools.Cargo;
-import com.diplom11.diplom11.DictionaryTools.Dictionary;
-import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -28,59 +28,21 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 import java.util.List;
 
-@EActivity(R.layout.activity_cargo_search)
+@EActivity(R.layout.activity_car_search)
 @OptionsMenu(R.menu.menu_common)
-public class CargoSearch extends ActionBarActivity {
-    @ViewById
-    ListView listViewCargo;
-    @ViewById
-    Button cargoOrderByAddDate, cargoOrderByCost, cargoOrderByArriveDate;
+public class CarSearch extends ActionBarActivity {
+    @ViewById ListView listViewCar;
 
-    @Extra
-    String date, fromCity, toCity, bodyType, loadType, payType;
-    @Extra
-    Double fromWeight, toWeight, fromVolume, toVolume;
+    @Extra String otprDate, arriveDate, fromCity, toCity, bodyType, loadType;
+    @Extra Double fromWeight, toWeight, fromVolume, toVolume;
 
-    private ArrayList<Cargo> cargos = new ArrayList<>();
-    private int orderMode;
+    private ArrayList<Car> cars = new ArrayList<>();
     private Intent intent;
     public PopupMenu popupMenu;
 
-
-    @Click
-    void cargoOrderByAddDate() {
-        if (orderMode == 0) {
-            orderMode = 1;
-        } else {
-            orderMode = 0;
-        }
-        loadCargos();
-    }
-
-    @Click
-    void cargoOrderByCost() {
-        if (orderMode == 3) {
-            orderMode = 2;
-        } else {
-            orderMode = 3;
-        }
-        loadCargos();
-    }
-
-    @Click
-    void cargoOrderByArriveDate() {
-        if (orderMode == 5) {
-            orderMode = 4;
-        } else {
-            orderMode = 5;
-        }
-        loadCargos();
-    }
-
-    @ItemClick
-    void listViewCargo(final Cargo cargo) {
-        popupMenu = new PopupMenu(this, listViewCargo);
-        popupMenu.inflate(R.menu.cspopupmenu);
+    @ItemClick void listViewCar(final Car car) {
+        popupMenu = new PopupMenu(this, listViewCar);
+        popupMenu.inflate(R.menu.carsppopupmenu);
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
@@ -88,10 +50,7 @@ public class CargoSearch extends ActionBarActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.csItem1:
-                        UserInfoActivity_.intent(CargoSearch.this).userId(cargo.getUserId()).start();
-                        return true;
-                    case R.id.csItem2:
-                        RouteActivity_.intent(CargoSearch.this).startCity(cargo.getLoadingCity()).endCity(cargo.getUnloadingCity()).start();
+                        UserInfoActivity_.intent(CarSearch.this).userId(car.getUserId()).start();
                         return true;
                     default:
                         return false;
@@ -102,9 +61,7 @@ public class CargoSearch extends ActionBarActivity {
         popupMenu.show();
     }
 
-    @AfterViews
-    void init() {
-        orderMode = 0;
+    @AfterViews void init() {
         intent = getIntent();
         loadCargos();
     }
@@ -120,8 +77,6 @@ public class CargoSearch extends ActionBarActivity {
             parseQuery.whereEqualTo("bodyType", bodyType);
         if (loadType != null && !loadType.isEmpty())
             parseQuery.whereEqualTo("loadType", loadType);
-        if (payType != null && !payType.isEmpty())
-            parseQuery.whereEqualTo("payType", payType);
         if (fromWeight != null)
             parseQuery.whereGreaterThanOrEqualTo("weight", fromWeight);
         if (toWeight != null)
@@ -130,45 +85,28 @@ public class CargoSearch extends ActionBarActivity {
             parseQuery.whereGreaterThanOrEqualTo("volume", fromVolume);
         if (toVolume != null)
             parseQuery.whereLessThanOrEqualTo("volume", toVolume);
-        if (toCity != null && !date.isEmpty())
-            parseQuery.whereGreaterThanOrEqualTo("arriveDate", date);
+        if (toCity != null && !otprDate.isEmpty())
+            parseQuery.whereGreaterThanOrEqualTo("otprDate", otprDate);
+        if (toCity != null && !otprDate.isEmpty())
+            parseQuery.whereLessThanOrEqualTo("arriveDate", arriveDate);
+        parseQuery.orderByAscending("otprDate");
 
-        switch (orderMode) {
-            case 0:
-                parseQuery.orderByAscending("createdAt");
-                break;
-            case 1:
-                parseQuery.orderByDescending("createdAt");
-                break;
-            case 2:
-                parseQuery.orderByAscending("cost");
-                break;
-            case 3:
-                parseQuery.orderByDescending("cost");
-                break;
-            case 4:
-                parseQuery.orderByAscending("arriveDate");
-                break;
-            case 5:
-                parseQuery.orderByDescending("arriveDate");
-                break;
-        }
         try {
             List list = parseQuery.find();
-            cargos.clear();
+            cars.clear();
             for (Object o : list) {
-                cargos.add(new Cargo((ParseObject) o));
+                cars.add(new Car((ParseObject) o));
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
         ArrayAdapter<Object> arrayAdapter;
-        if (cargos.size() > 0) {
-            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, cargos.toArray());
+        if (cars.size() > 0) {
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, cars.toArray());
         } else {
             arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new String[]{"Поиск по заданным параметрам не дал результатов"});
         }
-        listViewCargo.setAdapter(arrayAdapter);
+        listViewCar.setAdapter(arrayAdapter);
     }
 
     @OptionsItem(R.id.toMainMenu)

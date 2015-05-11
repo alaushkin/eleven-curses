@@ -17,4 +17,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_my_cars">MyCars</string>
     <string name="title_activity_add_car">AddCar</string>
+    <string name="title_activity_car_search_parametrs">CarSearchParametrs</string>
+    <string name="title_activity_car_search">CarSearch</string>
 </resources>

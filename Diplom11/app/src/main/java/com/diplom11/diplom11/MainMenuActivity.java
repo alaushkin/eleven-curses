@@ -18,15 +18,16 @@ public class MainMenuActivity extends ActionBarActivity {
 
     @Click void menuItem1() { CargoSearchParameters_.intent(this).start(); }
     @Click void menuItem2() { MyCars_.intent(this).start(); }
+    @Click void menuItem3() { CarSearchParameters_.intent(this).start(); }
     @Click void menuItem4() { MyCargos_.intent(this).start(); }
     @Click void menuItem5() { UsersSearchParamsActivity_.intent(this).start(); }
-
     @Click void menuItem6() { CabinetActivity_.intent(this).start(); }
 
     @Click void menuItem7() {
         ParseUser.getCurrentUser().logOut();
         AuthorizationActivity_.intent(this).start();
     }
+
     @AfterViews void init(){
         try {
             ParseQuery parseQuery = new ParseQuery("dop");

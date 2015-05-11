@@ -21,9 +21,12 @@ import com.parse.ParseUser;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_cabinet)
+@OptionsMenu(R.menu.menu_common)
 public class CabinetActivity extends ActionBarActivity {
     @ViewById TextView cabId, cabReit, cabError;
     @ViewById EditText cabEmail, cabFirstName, cabMidName, cabLastName, cabPhone, cabNewPassword;
@@ -84,4 +87,10 @@ public class CabinetActivity extends ActionBarActivity {
         }
         return true;
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

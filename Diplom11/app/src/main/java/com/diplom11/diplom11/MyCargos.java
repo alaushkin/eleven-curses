@@ -21,6 +21,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import java.util.List;
 
 
 @EActivity(R.layout.activity_my_cargos)
+@OptionsMenu(R.menu.menu_common)
 public class MyCargos extends ActionBarActivity {
     @ViewById ListView myCargos;
     private ArrayList<Cargo> cargos = new ArrayList<>();
@@ -70,4 +73,10 @@ public class MyCargos extends ActionBarActivity {
             e.printStackTrace();
         }
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }

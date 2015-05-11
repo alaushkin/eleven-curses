@@ -94,6 +94,14 @@
             android:name=".AddCar_"
             android:label="Добавить машину" >
         </activity>
+        <activity
+            android:name=".CarSearchParameters_"
+            android:label="Параметры поиска" >
+        </activity>
+        <activity
+            android:name=".CarSearch_"
+            android:label="Поиск автотранспорта" >
+        </activity>
     </application>
 
 </manifest>

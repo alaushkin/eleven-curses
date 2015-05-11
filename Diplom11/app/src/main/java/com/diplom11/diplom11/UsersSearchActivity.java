@@ -13,6 +13,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import java.util.List;
 
 
 @EActivity(R.layout.activity_users_search)
+@OptionsMenu(R.menu.menu_common)
 public class UsersSearchActivity extends ActionBarActivity {
     @ViewById ListView usList;
     @Extra String lastName, firstName, midName, email, orgType;
@@ -73,4 +76,10 @@ public class UsersSearchActivity extends ActionBarActivity {
             e.printStackTrace();
         }
     }
+
+    @OptionsItem(R.id.toMainMenu)
+    void myMethod() {
+        MainMenuActivity_.intent(this).start();
+    }
+
 }
